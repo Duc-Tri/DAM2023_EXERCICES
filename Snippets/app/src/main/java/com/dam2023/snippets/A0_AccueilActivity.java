@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.dam2023.snippets.activity01.A11_LinearLayoutXml;
+import com.dam2023.snippets.activity01.A12_FrameLayoutXml;
 
 public class A0_AccueilActivity extends AppCompatActivity {
 
@@ -15,6 +16,8 @@ public class A0_AccueilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a0_activity_accueil);
+
+
         TextView tvLinearLayout = findViewById(R.id.tvLinearLayout);
         tvLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -23,6 +26,16 @@ public class A0_AccueilActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        TextView tvFrameLayout = findViewById(R.id.tvFrameLayout);
+        tvFrameLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(A0_AccueilActivity.this, A12_FrameLayoutXml.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 }

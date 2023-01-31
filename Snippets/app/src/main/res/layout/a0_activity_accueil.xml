@@ -8,21 +8,24 @@
     tools:context=".A0_AccueilActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="426dp"
-        android:layout_height="36dp"
+        android:id="@+id/A0_TITRE"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:background="@android:color/holo_red_light"
         android:text="Layout XML"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="-1dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/tvLinearLayout"
-        android:layout_width="157dp"
-        android:layout_height="181dp"
+        android:layout_width="155dp"
+        android:layout_height="78dp"
+        android:background="?android:attr/colorPressedHighlight"
         android:text="Linear Layout"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -30,7 +33,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/A0_TITRE"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvFrameLayout"
+        android:layout_width="155dp"
+        android:layout_height="0dp"
+        android:background="@color/design_default_color_secondary_variant"
+        android:text="Frame Layout"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+
+        app:layout_constraintBottom_toBottomOf="@+id/tvLinearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvLinearLayout"
+        app:layout_constraintTop_toTopOf="@+id/tvLinearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

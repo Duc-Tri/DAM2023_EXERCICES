@@ -11,9 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Snippets"
         tools:targetApi="31">
+
         <activity
-            android:name=".A11_LinearLayoutXml"
+            android:name=".activity01.A12_FrameLayoutXml"
             android:exported="false" />
+
+        <activity
+            android:name=".activity01.A11_1_LinearLayoutVerticalXml"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity01.A11_LinearLayoutXml"
+            android:exported="false" />
+
         <activity
             android:name=".A0_AccueilActivity"
             android:exported="true">
