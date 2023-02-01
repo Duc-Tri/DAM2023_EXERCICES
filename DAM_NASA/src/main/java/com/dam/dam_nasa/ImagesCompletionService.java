@@ -19,7 +19,9 @@ public class ImagesCompletionService {
         for (int i = 0; i < imagesURL.size(); i++) {
             oneImageView = ivVignettes[i];
             String url = imagesURL.get(i);
-            System.out.println("ImagesCompletionService::Launch ----------------- " + url);
+
+            //System.out.println("ImagesCompletionService::Launch ----------------- " + url);
+
             completion.submit(new CallableImageLoader(oneImageView, url, total++));
         }
 
@@ -32,6 +34,7 @@ public class ImagesCompletionService {
                 e.printStackTrace();
             }
         }
+
         /////////////executor.shutdown();
 
         System.out.println("ImagesCompletionService::Launch IMAGES = " + imagesURL.size());

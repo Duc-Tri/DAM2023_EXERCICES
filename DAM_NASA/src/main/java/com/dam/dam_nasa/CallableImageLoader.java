@@ -19,10 +19,10 @@ public class CallableImageLoader implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        //monImage = null;
         image = new Image(imageURL,true);
         imageView.setImage(image);
-        System.out.println("chargement......" + Thread.currentThread().getName() + " - " + imageURL);
+
+        //System.out.println("chargement......" + Thread.currentThread().getName() + " - " + imageURL);
 
         return num;
     }
