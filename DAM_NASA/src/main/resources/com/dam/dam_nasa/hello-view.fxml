@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: &quot;#1D76DA&quot;;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.dam_nasa.HelloController">
+   <center>
+      <ImageView fx:id="imageView" fitHeight="500.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../../../rover.jpg" />
+         </image>
+      </ImageView>
+   </center>
+   <bottom>
+      <Label fx:id="labelText" text="0" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </bottom>
+   <top>
+      <TilePane fx:id="grille" alignment="CENTER" hgap="4.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: &quot;#081DAC&quot;;" vgap="4.0" BorderPane.alignment="TOP_CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </TilePane>
+   </top>
+   <left>
+
+       <SplitPane fx:id="splitpaneL" dividerPositions="0.5" maxHeight="120.0" minHeight="10.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-radius: 0;" BorderPane.alignment="CENTER">
+           <items>
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                   <children>
+                       <Button fx:id="prevImageButton" alignment="CENTER" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onPreviousImageButton" prefWidth="100.0" text="&lt; image précédente" textAlignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <font>
+                               <Font name="System Bold" size="14.0" />
+                           </font>
+                       </Button>
+                   </children>
+               </AnchorPane>
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                   <children>
+                       <Button fx:id="prevSetButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#on50PreviousImagesButton" prefWidth="100.0" text="&lt;&lt; 50 images précédentes" textAlignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <font>
+                               <Font name="System Bold" size="14.0" />
+                           </font>
+                       </Button>
+                   </children>
+               </AnchorPane>
+           </items>
+       </SplitPane>
+
+   </left>
+   <right>
+      <SplitPane fx:id="splitpaneR" dividerPositions="0.5" maxHeight="120.0" minHeight="10.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-radius: 0;" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="160.0">
+               <children>
+                  <Button fx:id="nextImageButton" alignment="CENTER" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onNextImageButton" prefWidth="100.0" text="image suivante &gt;" textAlignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="160.0">
+               <children>
+                  <Button fx:id="nextSetButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#on50NextImagesButton" prefWidth="100.0" text="50 images suivantes &gt;&gt;" textAlignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </right>
+</BorderPane>
