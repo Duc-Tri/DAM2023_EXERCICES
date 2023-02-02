@@ -19,10 +19,10 @@ public class EnemyShip extends Ship {
         Laser[] lasers = new Laser[2];
 
         lasers[0] = new Laser(xPosition + width * .18f, yPosition - laserHeight,
-                4*laserWidth, 4*laserHeight, laserMovementSpeed, laserTextureRegion);
+                laserWidth, laserHeight, laserMovementSpeed, laserTextureRegion);
 
         lasers[1] = new Laser(xPosition + width * .82f, yPosition - laserHeight,
-                4*laserWidth, 4*laserHeight, laserMovementSpeed, laserTextureRegion);
+                laserWidth, laserHeight, laserMovementSpeed, laserTextureRegion);
 
         timeSinceLastShot = 0;
 

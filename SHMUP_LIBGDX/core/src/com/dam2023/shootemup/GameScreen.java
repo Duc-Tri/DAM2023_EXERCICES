@@ -72,13 +72,13 @@ public class GameScreen implements Screen {
         //set up gameobjects
         playerShip = new PlayerShip(WORLD_WIDTH / 2, WORLD_HEIGHT / 4,
                 10, 10,
-                2, 3,
+                2, 6,
                 .4f, 4, 45, .5f,
                 playerShipTextureRegion, playerShieldTextureRegion, playerLaserTextureRegion);
 
         enemyShip = new EnemyShip(WORLD_WIDTH / 2, WORLD_HEIGHT * 3 / 4,
                 10, 10,
-                2, 1,
+                2, 5,
                 .3f, 5, 50, .8f,
                 enemyShipTextureRegion, enemyShieldTextureRegion, enemyLaserTextureRegion);
 
@@ -90,7 +90,7 @@ public class GameScreen implements Screen {
 
     Texture test = new Texture("world.png");
 
-//    @Override
+    //    @Override
     public void render1(float deltaTime) {
         Gdx.gl.glClearColor(0.9f, 0.4f, 0.7f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -102,7 +102,7 @@ public class GameScreen implements Screen {
         batch.draw(backgrounds[2], 200, 200);
         batch.draw(backgrounds[3], 300, 300);
 
-        batch.draw(test, 400,400);
+        batch.draw(test, 400, 400);
 
         //renderBackground(deltaTime);
 
@@ -125,6 +125,44 @@ public class GameScreen implements Screen {
         //player ship
         playerShip.draw(batch);
 
+        // draw lasers ========================================================
+        renderLasers(deltaTime);
+
+        //detect collisions
+        detectCollisions();
+
+        //explosions ==========================================================
+        renderExplosions(deltaTime);
+
+        batch.end();
+    }
+
+    private void detectCollisions() {
+        //for each player laser check if it intersects enemy ship
+        ListIterator<Laser> iterator = playerLaserList.listIterator();
+        while (iterator.hasNext()) {
+            Laser laser = iterator.next();
+            if (enemyShip.intersects(laser.getBoundingBox())) {
+                enemyShip.hit(laser);
+                iterator.remove();
+            }
+        }
+
+        //for each enemy laser check if it intersects player ship
+        iterator = enemyLaserList.listIterator();
+        while (iterator.hasNext()) {
+            Laser laser = iterator.next();
+            if (playerShip.intersects(laser.getBoundingBox())) {
+                playerShip.hit(laser);
+                iterator.remove();
+            }
+        }
+    }
+
+    private void renderExplosions(float deltaTime) {
+    }
+
+    private void renderLasers(float deltaTime) {
         // create new lasers ==================================================
         if (playerShip.canFireLaser()) {
             Laser[] lasers = playerShip.fireLasers();
@@ -138,9 +176,6 @@ public class GameScreen implements Screen {
                 enemyLaserList.add(laser);
             }
         }
-
-        // draw lasers ========================================================
-
 
         // remove old lasers ==================================================
         ListIterator<Laser> iterator = playerLaserList.listIterator();
@@ -159,16 +194,12 @@ public class GameScreen implements Screen {
             if (laser.yPosition + laser.height < 0)
                 iterator.remove();
         }
-
-        //explosions ==========================================================
-
-        batch.end();
     }
 
     private void renderBackground(float deltaTime) {
 
         for (int layer = 0; layer < backgroundOffsets.length; layer++) {
-            backgroundOffsets[layer] += deltaTime * backgroundMaxScrollingSpeed / Math.pow(2,backgroundOffsets.length-layer);
+            backgroundOffsets[layer] += deltaTime * backgroundMaxScrollingSpeed / Math.pow(2, backgroundOffsets.length - layer);
 
             if (backgroundOffsets[layer] > WORLD_HEIGHT) {
                 backgroundOffsets[layer] = 0;
