@@ -5,9 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
@@ -35,20 +32,7 @@ public class HelloApplication extends Application {
         boissonsList.LoadList("mes_boissons2.csv");
         boissonsList.PrintList();
 
-        BufferedReader inputStream = null;
-        try {
-            inputStream = new BufferedReader(new FileReader(HelloApplication.class.getResource("/TestHello").getPath()));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            System.out.println(inputStream.readLine());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-
-        //launch();
+        launch();
     }
 
 }
