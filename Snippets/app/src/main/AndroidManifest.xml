@@ -13,14 +13,25 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".activity04.A41_Audio_Auto"
+            android:name=".A0_AccueilActivity"
             android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activity05.A51_Video_Player"
+            android:exported="false" />
+
+        <activity
+            android:name=".a3_animations.A32_Simpson_Animation"
+            android:exported="false" />
+        <activity
+            android:name=".activity04.A41_Audio_Auto"
+            android:exported="false" />
         <activity
             android:name=".activity01.A12_FrameLayoutXml"
             android:exported="false" />
@@ -30,10 +41,6 @@
         <activity
             android:name=".activity01.A11_LinearLayoutXml"
             android:exported="false" />
-        <activity
-            android:name=".A0_AccueilActivity"
-            android:exported="true">
-        </activity>
     </application>
 
 </manifest>

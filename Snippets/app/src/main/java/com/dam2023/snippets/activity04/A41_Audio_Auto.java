@@ -24,7 +24,44 @@ public class A41_Audio_Auto extends AppCompatActivity {
 
         mediaPlayer = MediaPlayer.create(this, R.raw.mp_audio_uptown_funk);
 
-        // VOLUME ==========================
+        manageVolumeBar();
+        managePositinoBar();
+    }
+
+    // POSITION SEEKBAR ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    private void managePositinoBar() {
+        SeekBar sbPosition = findViewById(R.id.sbPosition);
+        sbPosition.setMax(mediaPlayer.getDuration());
+
+        sbPosition.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                //mettre la durée plus tard
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                myPause(sbPosition);
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                myPlay(sbPosition);
+                mediaPlayer.seekTo(sbPosition.getProgress());
+            }
+        });
+
+        //
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                sbPosition.setProgress(mediaPlayer.getCurrentPosition());
+            }
+        }, 0, 100);
+    }
+
+    // VOLUME ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    private void manageVolumeBar() {
         SeekBar sbVolume = findViewById(R.id.sbVolume);
         AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
@@ -49,36 +86,6 @@ public class A41_Audio_Auto extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
-
-        // POSITION SEEKBAR ====================
-        SeekBar sbPosition = findViewById(R.id.sbPosition);
-        sbPosition.setMax(mediaPlayer.getDuration());
-
-        sbPosition.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                myPause(sbPosition);
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                myPlay(sbPosition);
-                mediaPlayer.seekTo(sbPosition.getProgress());
-            }
-        });
-
-        new Timer().scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                sbPosition.setProgress(mediaPlayer.getCurrentPosition());
-            }
-        }, 0, 300);
-
     }
 
     public void myPlay(View view) {
@@ -87,6 +94,10 @@ public class A41_Audio_Auto extends AppCompatActivity {
 
     public void myPause(View view) {
         mediaPlayer.pause();
+    }
+
+    private void position() {
+
     }
 
 }
