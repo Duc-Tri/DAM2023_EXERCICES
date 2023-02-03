@@ -5,103 +5,79 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4E4E4E"
+    android:theme="@style/Theme.AppCompat.NoActionBar"
     tools:context=".A0_AccueilActivity">
 
     <TextView
         android:id="@+id/A0_TITRE"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="299dp"
+        android:layout_height="80dp"
         android:background="#6CD555"
-        android:gravity="center"
         android:text="Layout XML"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvLinearLayout"
+        android:textSize="34sp"
+        android:theme="@style/TexteAccueil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/tvSimpsons"
+        android:id="@+id/tvLinearLayout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-
-        android:layout_marginBottom="346dp"
-        android:background="#E32F8C"
-        android:gravity="center"
-        android:text="ANIMATION"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvAudio"
-        app:layout_constraintStart_toEndOf="@+id/tvFrameLayout"
-        app:layout_constraintTop_toBottomOf="@+id/A0_TITRE"
-        app:layout_constraintVertical_bias="0.5" />
+        android:layout_height="100dp"
+        android:background="?android:attr/colorPressedHighlight"
+        android:text="Linear Layout"
+        android:theme="@style/TexteAccueil"
+        app:layout_constraintEnd_toStartOf="@id/tvFrameLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/A0_TITRE" />
 
     <TextView
         android:id="@+id/tvVideo"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-
+        android:layout_height="100dp"
         android:background="#59ACF4"
-        android:gravity="center"
         android:text="VIDEO PLAYER"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:theme="@style/TexteAccueil"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAudio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvAudio"
-        app:layout_constraintTop_toBottomOf="@+id/A0_TITRE"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toTopOf="@+id/tvAudio" />
 
     <TextView
         android:id="@+id/tvAudio"
         android:layout_width="0dp"
-        android:layout_height="106dp"
-
+        android:layout_height="100dp"
         android:background="#E8650D"
-        android:gravity="center"
         android:text="AUDIO PLAYER"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvVideo"
-        app:layout_constraintStart_toEndOf="@+id/tvSimpsons"
-        app:layout_constraintTop_toBottomOf="@+id/A0_TITRE"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <TextView
-        android:id="@+id/tvLinearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="9dp"
-        android:background="?android:attr/colorPressedHighlight"
-        android:gravity="center"
-        android:text="Linear Layout"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvFrameLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/A0_TITRE"
-        app:layout_constraintVertical_bias="0.5" />
+        android:theme="@style/TexteAccueil"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAnimation"
+        app:layout_constraintEnd_toStartOf="@id/tvVideo"
+        app:layout_constraintStart_toEndOf="@+id/tvAnimation"
+        app:layout_constraintTop_toTopOf="@+id/tvAnimation" />
 
     <TextView
         android:id="@+id/tvFrameLayout"
         android:layout_width="0dp"
-        android:layout_height="96dp"
-
+        android:layout_height="100dp"
         android:background="@color/design_default_color_secondary_variant"
-        android:gravity="center"
         android:text="Frame Layout"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvSimpsons"
+        android:theme="@style/TexteAccueil"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLinearLayout"
+        app:layout_constraintEnd_toStartOf="@id/tvAnimation"
         app:layout_constraintStart_toEndOf="@+id/tvLinearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/A0_TITRE"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toTopOf="@+id/tvLinearLayout" />
+
+    <TextView
+        android:id="@+id/tvAnimation"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="#E32F8C"
+        android:text="ANIMATION"
+        android:theme="@style/TexteAccueil"
+        app:layout_constraintBottom_toBottomOf="@+id/tvFrameLayout"
+        app:layout_constraintEnd_toStartOf="@id/tvAudio"
+        app:layout_constraintStart_toEndOf="@+id/tvFrameLayout"
+        app:layout_constraintTop_toTopOf="@+id/tvFrameLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

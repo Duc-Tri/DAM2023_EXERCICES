@@ -1,5 +1,7 @@
 package com.dam2023.snippets;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -20,7 +22,19 @@ public class A0_AccueilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a0_activity_accueil);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
+        setListenerForFrameLayout();
+        setListenerForLinearLayout();
+
+        setListenerForAnimation();
+        setListenerForAudio();
+        setListenerForVideo();
+    }
+
+    // LINEAR LAYOUT ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    private void setListenerForLinearLayout() {
         TextView tvLinearLayout = findViewById(R.id.tvLinearLayout);
         tvLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,8 +43,10 @@ public class A0_AccueilActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
-
+    // FRAME LAYOUT ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    private void setListenerForFrameLayout() {
         TextView tvFrameLayout = findViewById(R.id.tvFrameLayout);
         tvFrameLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,8 +55,22 @@ public class A0_AccueilActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
-        // AUDIO ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    // ANIMATION ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    private void setListenerForAnimation() {
+        TextView tvSimpsons = findViewById(R.id.tvAnimation);
+        tvSimpsons.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(A0_AccueilActivity.this, A32_Simpson_Animation.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    // AUDIO ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    private void setListenerForAudio() {
         TextView tvAudio = findViewById(R.id.tvAudio);
         tvAudio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,18 +79,10 @@ public class A0_AccueilActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
-        // ANIMATION ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-        TextView tvSimpsons = findViewById(R.id.tvSimpsons);
-        tvSimpsons.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(A0_AccueilActivity.this, A32_Simpson_Animation.class);
-                startActivity(intent);
-            }
-        });
-
-        // VIDEO ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    // VIDEO ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    private void setListenerForVideo() {
         TextView tvVideo = findViewById(R.id.tvVideo);
         tvVideo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +91,6 @@ public class A0_AccueilActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
 }

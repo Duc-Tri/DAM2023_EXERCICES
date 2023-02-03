@@ -1,5 +1,6 @@
 package com.dam2023.snippets.a3_animations;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -14,11 +15,12 @@ public class A32_Simpson_Animation extends AppCompatActivity {
     ImageView ivTitle, ivHomer, ivBart;
     float MAX_X, MAX_Y;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a32_simpson_animation);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         ivTitle = findViewById(R.id.ivSimpsonsTitle);
         ivHomer = findViewById(R.id.ivHomerSimpson);
@@ -42,7 +44,7 @@ public class A32_Simpson_Animation extends AppCompatActivity {
         //ivHomer.setY(SCREEN_HEIGHT_DP + ivHomer.getHeight());
         ivHomer.setX(SCREEN_WIDTH_PX + ivHomer.getWidth() + 500);
         ivBart.setX(SCREEN_WIDTH_PX + ivBart.getWidth());
-        ivBart.setY(SCREEN_HEIGHT_PX / 2 - ivBart.getHeight()-100);
+        ivBart.setY(SCREEN_HEIGHT_PX / 2 - ivBart.getHeight() - 100);
 
         final int TITLE_DURATION = 500;
         final int HOMER_DURATION = 5000;

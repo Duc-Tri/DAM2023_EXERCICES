@@ -1,5 +1,6 @@
 package com.dam2023.snippets.activity04;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.AudioManager;
@@ -21,6 +22,8 @@ public class A41_Audio_Auto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a41_audio_auto);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         mediaPlayer = MediaPlayer.create(this, R.raw.mp_audio_uptown_funk);
 
