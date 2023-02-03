@@ -25,8 +25,8 @@
 
     <ImageView
         android:id="@+id/ivSimpsonsTitle"
-        android:layout_width="487dp"
-        android:layout_height="430dp"
+        android:layout_width="0dp"
+        android:layout_height="445dp"
         android:src="@drawable/les_simpson"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

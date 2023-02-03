@@ -28,15 +28,19 @@ public class A51_Video_Player extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        // link vers la vidéo de DRUNK
         String uriPath = ("android.resource://" + getPackageName() + "/raw/" + R.raw.mp_ts_drunk);
         Uri uri = Uri.parse(uriPath);
 
-        mediaController = new MediaController(this);
+        if (this.mediaController == null)
+            mediaController = new MediaController(this);
         mediaController.setAnchorView(videoView);
 
         videoView.setMediaController(mediaController);
         videoView.setVideoURI(uri);
-        videoView.start();
+        //videoView.start();
+        videoPosition = 0;
+        seekToPosition();
     }
 
     @Override
@@ -44,13 +48,18 @@ public class A51_Video_Player extends AppCompatActivity {
         super.onResume();
     }
 
+    private void seekToPosition() {
+        videoView.seekTo(videoPosition);
+        videoView.start();
+    }
+
+
     @Override
     protected void onPause() {
         super.onPause();
-
         videoPosition = videoView.getCurrentPosition();
+
         Log.i("ANDROID", "onPause - POSITION:" + videoPosition);
-        //outState.putInt("VideoPosition", position /*+120*1000*/);
 
         videoView.pause();
     }
@@ -58,9 +67,29 @@ public class A51_Video_Player extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
         Log.i("ANDROID", "onStart - POSITION:" + videoPosition);
-        videoView.seekTo(videoPosition);
-        videoView.start();
+
+        seekToPosition();
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("VideoPosition", videoPosition);
+
+        Log.i("ANDROID", "onSaveInstanceState - POSITION:" + videoPosition);
+
+        videoView.pause();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        videoPosition = savedInstanceState.getInt("VideoPosition");
+
+        Log.i("ANDROID", "onRestoreInstanceState - POSITION:" + videoPosition);
+
+        seekToPosition();
+    }
 }

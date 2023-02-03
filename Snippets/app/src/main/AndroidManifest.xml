@@ -24,7 +24,7 @@
 
         <activity
             android:name=".activity05.A51_Video_Player"
-            android:exported="false" />
+            android:exported="true" />
 
         <activity
             android:name=".a3_animations.A32_Simpson_Animation"
