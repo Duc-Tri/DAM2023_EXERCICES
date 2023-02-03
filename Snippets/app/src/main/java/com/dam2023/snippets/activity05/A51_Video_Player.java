@@ -53,7 +53,6 @@ public class A51_Video_Player extends AppCompatActivity {
         videoView.start();
     }
 
-
     @Override
     protected void onPause() {
         super.onPause();

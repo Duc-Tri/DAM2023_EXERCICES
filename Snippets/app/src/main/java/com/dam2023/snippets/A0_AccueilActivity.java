@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.dam2023.snippets.a3_animations.A32_Simpson_Animation;
 import com.dam2023.snippets.activity01.A11_LinearLayoutXml;
 import com.dam2023.snippets.activity01.A12_FrameLayoutXml;
+import com.dam2023.snippets.activity01.A16_GridLayout;
 import com.dam2023.snippets.activity04.A41_Audio_Auto;
 import com.dam2023.snippets.activity05.A51_Video_Player;
 
@@ -31,6 +32,19 @@ public class A0_AccueilActivity extends AppCompatActivity {
         setListenerForAnimation();
         setListenerForAudio();
         setListenerForVideo();
+
+        setListenerForGridLayout();
+    }
+
+    private void setListenerForGridLayout() {
+        TextView tvGridLayout = findViewById(R.id.tvGridLayout);
+        tvGridLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(A0_AccueilActivity.this, A16_GridLayout.class);
+                startActivity(intent);
+            }
+        });
     }
 
     // LINEAR LAYOUT ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■

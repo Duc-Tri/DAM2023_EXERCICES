@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#143727"
+    android:background="#0A0A0A"
     tools:context=".activity05.A51_Video_Player">
 
     <FrameLayout

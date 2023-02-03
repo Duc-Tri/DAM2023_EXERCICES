@@ -33,6 +33,18 @@
         app:layout_constraintTop_toBottomOf="@id/A0_TITRE" />
 
     <TextView
+        android:id="@+id/tvGridLayout"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="#7728CF"
+        android:text="Grid Layout"
+        android:theme="@style/TexteAccueil"
+        app:layout_constraintEnd_toStartOf="@id/tvFrameLayout"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLinearLayout" />
+
+    <TextView
         android:id="@+id/tvVideo"
         android:layout_width="0dp"
         android:layout_height="100dp"
