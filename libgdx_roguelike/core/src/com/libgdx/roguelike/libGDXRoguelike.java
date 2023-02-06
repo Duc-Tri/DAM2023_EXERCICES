@@ -18,7 +18,7 @@ public class libGDXRoguelike extends ApplicationAdapter implements InputProcesso
     OrthographicCamera camera;
     TiledMapRenderer tiledMapRenderer;
     Viewport viewport;
-    final int SCREEN_WIDTH = 711;
+    final int SCREEN_WIDTH = 720;
     final int SCREEN_HEIGHT = 400;
 
     @Override

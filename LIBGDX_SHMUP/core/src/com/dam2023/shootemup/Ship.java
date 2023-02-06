@@ -10,8 +10,6 @@ public abstract class Ship {
     int shield;
 
     //position & dimension
-    float xPosition, yPosition; // lower-left corner
-    float width, height;
     Rectangle boundingBox;
 
     // graphics
@@ -30,11 +28,8 @@ public abstract class Ship {
                 TextureRegion shipTR, TextureRegion shieldTR, TextureRegion laserTR) {
         this.movementSpeed = movementSpeed;
         this.shield = shield;
-        this.xPosition = xCentre - width / 2;
-        this.yPosition = yCentre - height / 2;
-        this.width = width;
-        this.height = height;
-        this.boundingBox = new Rectangle(xPosition, yPosition, width, height);
+
+        this.boundingBox = new Rectangle(xCentre - width / 2, yCentre - height / 2, width, height);
         this.shipTextureRegion = shipTR;
         this.shieldTextureRegion = shieldTR;
 
@@ -46,7 +41,6 @@ public abstract class Ship {
     }
 
     public void update(float deltaTime) {
-        boundingBox.set(xPosition, yPosition, width, height);
         timeSinceLastShot += deltaTime;
     }
 
@@ -57,9 +51,9 @@ public abstract class Ship {
     public abstract Laser[] fireLasers();
 
     public void draw(Batch batch) {
-        batch.draw(shipTextureRegion, xPosition, yPosition, width, height);
+        batch.draw(shipTextureRegion, boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
         if (shield > 0) {
-            batch.draw(shieldTextureRegion, xPosition, yPosition, width, height);
+            batch.draw(shieldTextureRegion, boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
         }
     }
 
@@ -70,5 +64,9 @@ public abstract class Ship {
     public void hit(Laser laser) {
         if (shield > 0)
             shield--;
+    }
+
+    public void translate(float xChange, float yChange) {
+        boundingBox.setPosition(boundingBox.x + xChange, boundingBox.y + yChange);
     }
 }
