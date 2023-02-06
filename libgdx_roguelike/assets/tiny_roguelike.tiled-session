@@ -1,0 +1,53 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "roguelike_town.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "kenney.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "roguelike_outworld.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 222.66666666666669,
+                "y": 406.66666666666663
+            }
+        },
+        "roguelike_town.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 445.5,
+                "y": 402
+            }
+        }
+    },
+    "last.imagePath": "C:/WORK/DAM2023_EXERCICES/libgdx_roguelike/assets",
+    "map.height": 50,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 50,
+    "openFiles": [
+        "kenney.tsx",
+        "roguelike_town.tmx"
+    ],
+    "project": "tiny_roguelike.tiled-project",
+    "recentFiles": [
+        "kenney.tsx",
+        "roguelike_town.tmx",
+        "roguelike_outworld.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
