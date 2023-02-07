@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Snippets</string>
+
+    <string name="btnValid">OK</string>
+
+    <string-array name="students">
+        <item>Imothepu</item>
+        <item>Tri</item>
+        <item>Michel</item>
+        <item>Pierre</item>
+        <item>Mathias</item>
+        <item>Yacouba</item>
+        <item>Inan</item>
+        <item>Jason</item>
+    </string-array>
+
+
 </resources>

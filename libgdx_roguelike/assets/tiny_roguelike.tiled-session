@@ -3,14 +3,22 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "roguelike_town.tmx",
+    "activeFile": "roguelike_dungeon.tmx",
     "expandedProjectPaths": [
         "."
     ],
     "fileStates": {
         "kenney.tsx": {
-            "scaleInDock": 1.5,
+            "scaleInDock": 2,
             "scaleInEditor": 1
+        },
+        "roguelike_dungeon.tmx": {
+            "scale": 2,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 189.75,
+                "y": 221
+            }
         },
         "roguelike_outworld.tmx": {
             "scale": 1.5,
@@ -24,8 +32,8 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 445.5,
-                "y": 402
+                "x": 465.5,
+                "y": 400
             }
         }
     },
@@ -37,12 +45,14 @@
     "map.width": 50,
     "openFiles": [
         "kenney.tsx",
-        "roguelike_town.tmx"
+        "roguelike_town.tmx",
+        "roguelike_dungeon.tmx"
     ],
     "project": "tiny_roguelike.tiled-project",
     "recentFiles": [
         "kenney.tsx",
         "roguelike_town.tmx",
+        "roguelike_dungeon.tmx",
         "roguelike_outworld.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#232323"
+    tools:context=".activity05.A53_Spinner">
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#27B0E6"
+        android:gravity="center"
+        android:text="SPINNER - XML[] pur"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spinnerXML"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#716FC8"
+        android:entries="@array/students"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Spinner
+        android:id="@+id/spinnerXMLJava"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#5FA673"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#489C5A"
+        android:gravity="center"
+        android:text="SPINNER - XML[] + Java"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerXML"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <Spinner
+        android:id="@+id/spinnerJavaJava"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#9A4848"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#C564AC"
+        android:gravity="center"
+        android:text="SPINNER - Java[] + Java"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerXMLJava" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

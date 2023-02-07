@@ -15,6 +15,8 @@ import com.dam2023.snippets.activity01.A12_FrameLayoutXml;
 import com.dam2023.snippets.activity01.A16_GridLayout;
 import com.dam2023.snippets.activity04.A41_Audio_Auto;
 import com.dam2023.snippets.activity05.A51_Video_Player;
+import com.dam2023.snippets.activity05.A52_List_Layout;
+import com.dam2023.snippets.activity05.A53_Spinner;
 
 public class A0_AccueilActivity extends AppCompatActivity {
 
@@ -34,6 +36,34 @@ public class A0_AccueilActivity extends AppCompatActivity {
         setListenerForVideo();
 
         setListenerForGridLayout();
+
+        setListenerForListLayout();
+
+        setListenerForSpinner();
+    }
+
+    private void setListenerForSpinner() {
+        TextView tvSpinner = findViewById(R.id.tvSpinner);
+        tvSpinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(A0_AccueilActivity.this, A53_Spinner.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    private void setListenerForListLayout() {
+        TextView tvListLayout = findViewById(R.id.tvListLayout);
+        tvListLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(A0_AccueilActivity.this, A52_List_Layout.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void setListenerForGridLayout() {
