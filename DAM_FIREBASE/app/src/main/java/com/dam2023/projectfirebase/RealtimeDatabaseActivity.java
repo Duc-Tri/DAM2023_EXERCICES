@@ -1,15 +1,20 @@
 package com.dam2023.projectfirebase;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
-import com.dam2023.projectfirebase.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RealtimeDatabaseActivity extends AppCompatActivity {
 
@@ -18,13 +23,18 @@ public class RealtimeDatabaseActivity extends AppCompatActivity {
     private Button btnMessage;
     private EditText etMessage;
 
+    private TextView tvReadMessage;
+
+    private static final String TAG = "RealTimeActivity";
+
+
     private void initUI() {
         btnMessage = (Button) findViewById(R.id.btnSend);
         etMessage = (EditText) findViewById(R.id.etMessage);
+        tvReadMessage = (TextView) findViewById(R.id.tvReadMessage);
     }
 
-    public void setOnClickListener()
-    {
+    public void setOnClickListener() {
         btnMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,8 +47,27 @@ public class RealtimeDatabaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_realtime_database);
+
         initUI();
+
         setOnClickListener();
+
+        setValueEventListener();
+    }
+
+    public void setValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String val = snapshot.getValue(String.class);
+                tvReadMessage.setText(val);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "Failed to read value", error.toException());
+            }
+        });
     }
 
 }
