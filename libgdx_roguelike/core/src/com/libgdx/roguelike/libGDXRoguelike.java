@@ -21,6 +21,13 @@ public class libGDXRoguelike extends ApplicationAdapter implements InputProcesso
     final int SCREEN_WIDTH = 720;
     final int SCREEN_HEIGHT = 400;
 
+
+//    boolean tempXYDefined = false;
+    float tempPositionX=0;
+    float tempPositionY=0;
+
+
+
     @Override
     public void resize(int width, int height) {
         viewport.update(width, height);
@@ -32,9 +39,7 @@ public class libGDXRoguelike extends ApplicationAdapter implements InputProcesso
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, SCREEN_WIDTH, SCREEN_HEIGHT);
-//        camera.viewportHeight = screenHeight;
-//        camera.viewportWidth = screenWidth;
-//        camera.update();
+
         viewport = new FitViewport(SCREEN_WIDTH, SCREEN_HEIGHT,camera);
 
         tiledMap = new TmxMapLoader().load("roguelike_town.tmx");
@@ -59,7 +64,7 @@ public class libGDXRoguelike extends ApplicationAdapter implements InputProcesso
         camera.update();
         tiledMapRenderer.setView(camera);
         tiledMapRenderer.render();
-        //System.out.println(camera.position);
+
     }
 
     @Override
@@ -69,6 +74,7 @@ public class libGDXRoguelike extends ApplicationAdapter implements InputProcesso
 
     @Override
     public boolean keyUp(int keycode) {
+        System.out.println("keyUp ");
         if (keycode == Input.Keys.LEFT)
             camera.translate(-32, 0);
         if (keycode == Input.Keys.RIGHT)
@@ -92,26 +98,41 @@ public class libGDXRoguelike extends ApplicationAdapter implements InputProcesso
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        tempPositionX = screenX;
+        tempPositionY = screenY;
+
         return false;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        System.out.println("touchUp ");
+        resetTempPosition();
         return false;
+    }
+
+    private void resetTempPosition() {
+        tempPositionX = 0;
+        tempPositionY = 0;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
+            camera.translate( (tempPositionX-screenX)/2.0f,  (screenY-tempPositionY)/2.0f);
+            tempPositionX = screenX;
+            tempPositionY = screenY;
         return false;
     }
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
+        System.out.println("mouseMoved ");
         return false;
     }
 
     @Override
     public boolean scrolled(float amountX, float amountY) {
+        System.out.println("scrolled ");
         return false;
     }
 
