@@ -17,14 +17,16 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
+public class MainActivity2 extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity2";
     private static final String KEY_TITRE = "titre";
     private static final String KEY_NOTE = "note";
     private EditText etTitre, etNote;
@@ -46,32 +48,38 @@ public class MainActivity extends AppCompatActivity {
         etNote = (EditText) findViewById(R.id.etNote);
         tvSaveNote = (TextView) findViewById(R.id.tvSaveNote);
         tvShowNote = (TextView) findViewById(R.id.tvShowNote);
+
         randomTexts();
     }
 
     private void randomTexts() {
         etTitre.setText("TITRE-" + (int) (Math.random() * 1000000f));
         etNote.setText("NOTE-" + (int) (Math.random() * 1000000f));
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
+        String titre = etTitre.getText().toString();
+        String note = etNote.getText().toString();
+
+        Log.i(TAG, "saveNote ■ " + titre + " / " + note);
+
         // ce listener tourne en tache de fond
         noteRef3.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
                 if (error != null) {
-                    Toast.makeText(MainActivity.this, "ERREUR au chargement", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity2.this, "ERREUR au chargement", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, error.toString());
                     return; // on arrête tout
                 }
 
-                if (value.exists()) {
-                    String titre = value.getString(KEY_TITRE);
-                    String note = value.getString(KEY_NOTE);
-                    tvShowNote.setText("Titre: " + titre + "\nNote: " + note);
+                if (documentSnapshot.exists()) {
+                    Note contenuNote = documentSnapshot.toObject(Note.class);
+                    tvShowNote.setText("Titre: " + contenuNote.getTitre() + "\nNote: " + contenuNote.getNote());
 
                 } else {
                     tvShowNote.setText("");
@@ -83,21 +91,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         initUI();
     }
+
 
     public void saveNote(View v) {
 
         String titre = etTitre.getText().toString();
         String note = etNote.getText().toString();
-
-        Log.i(TAG, "saveNote ■ " + titre + " / " + note);
-
-        Map<String, Object> contenuNote = new HashMap<>();
-        contenuNote.put(KEY_TITRE, titre);
-        contenuNote.put(KEY_NOTE, note);
+        Note contenuNote = new Note(titre, note);
 
         // envoi des données Firestore
         noteRef3.set(contenuNote)
@@ -105,33 +109,33 @@ public class MainActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Toast.makeText(MainActivity.this, "Note enregistrée: ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity2.this, "Note enregistrée: ", Toast.LENGTH_SHORT).show();
                     }
                 })
                 // en cas d'erreur
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this, "ERREUR dans l'envoi", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity2.this, "ERREUR dans l'envoi", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, e.toString());
                     }
                 });
 
-        randomTexts();
+        //randomTexts();
     }
 
     public void loadNote(View v) {
+
         noteRef3.get()
                 // tout s'est bien passé
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                            String titre = documentSnapshot.getString(KEY_TITRE);
-                            String note = documentSnapshot.getString(KEY_NOTE);
-                            tvSaveNote.setText("Titre: " + titre + "\nNote: " + note);
+                            Note contenuNote = documentSnapshot.toObject(Note.class);
+                            tvSaveNote.setText("Titre: " + contenuNote.getTitre() + "\nNote: " + contenuNote.getNote());
                         } else {
-                            Toast.makeText(MainActivity.this, "Le document n'existe pas !", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity2.this, "Le document n'existe pas !", Toast.LENGTH_SHORT).show();
                         }
                     }
                 })
@@ -139,14 +143,53 @@ public class MainActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this, "ERREUR de lecture", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity2.this, "ERREUR de lecture", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, e.toString());
                     }
                 });
 
-        randomTexts();
+        //randomTexts();
     }
 
+    public void updateNote(View v) {
+        String textNote = etNote.getText().toString();
+        noteRef3.update(KEY_NOTE, textNote);
+    }
+
+    public void deleteNote(View v) {
+        noteRef3.update(KEY_NOTE, FieldValue.delete())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(MainActivity2.this, "La note est supprimée", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity2.this, "ERREUR de suppression", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, e.toString());
+                    }
+                });
+    }
+
+    public void deleteAll(View v) {
+        noteRef3.delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(MainActivity2.this, "TOUTE La note est supprimée", Toast.LENGTH_SHORT).show();
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity2.this, "ERREUR de DeleteAll", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, e.toString());
+                    }
+                });
+    }
 }
 
 /*
