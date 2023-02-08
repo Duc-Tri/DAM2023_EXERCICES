@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4B59AF"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/etTitre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Titre"
+        android:textSize="34sp" />
+
+    <EditText
+        android:id="@+id/etNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Note"
+        android:textSize="34sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:onClick="saveNote"
+            android:text="enregistrer"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:onClick="loadNote"
+            android:text="charger"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Méthode 1 avec le bouton afficher"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Hello World!"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/tvSaveNote"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Hello World!"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Hello World!"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Hello World!"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/tvShowNote"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Hello World!"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Hello World!"
+        android:textSize="34sp" />
+
+</LinearLayout>
