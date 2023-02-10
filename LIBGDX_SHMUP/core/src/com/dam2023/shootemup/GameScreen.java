@@ -94,27 +94,6 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();
     }
 
-    Texture test = new Texture("world.png");
-
-    //    @Override
-    public void render1(float deltaTime) {
-        Gdx.gl.glClearColor(0.9f, 0.4f, 0.7f, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        batch.begin();
-
-        batch.draw(backgrounds[0], 0, 0);
-        batch.draw(backgrounds[1], 100, 100);
-        batch.draw(backgrounds[2], 200, 200);
-        batch.draw(backgrounds[3], 300, 300);
-
-        batch.draw(test, 400, 400);
-
-        //renderBackground(deltaTime);
-
-        batch.end();
-    }
-
     @Override
     public void render(float deltaTime) {
         batch.begin();
