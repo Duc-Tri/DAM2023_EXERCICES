@@ -41,6 +41,7 @@ public abstract class Ship {
     }
 
     public void update(float deltaTime) {
+
         timeSinceLastShot += deltaTime;
     }
 

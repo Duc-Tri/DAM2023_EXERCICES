@@ -10,11 +10,15 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 import org.w3c.dom.Text;
 
+import java.util.Random;
+
 public class ShootEmUp extends Game {
 
     GameScreen gameScreen;
     Texture test;
     SpriteBatch batch;
+
+    public static Random random = new Random();
 
     @Override
     public void create() {

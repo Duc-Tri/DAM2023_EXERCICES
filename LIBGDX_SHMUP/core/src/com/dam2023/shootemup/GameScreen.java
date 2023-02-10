@@ -80,9 +80,9 @@ public class GameScreen implements Screen {
                 .4f, 4, 45, .5f,
                 playerShipTextureRegion, playerShieldTextureRegion, playerLaserTextureRegion);
 
-        enemyShip = new EnemyShip(WORLD_WIDTH / 2, WORLD_HEIGHT * 3 / 4,
+        enemyShip = new EnemyShip(ShootEmUp.random.nextFloat() * (WORLD_WIDTH - 10) + 5, WORLD_HEIGHT - 5,
                 10, 10,
-                2, 5,
+                48, 1,
                 .3f, 5, 50, .8f,
                 enemyShipTextureRegion, enemyShieldTextureRegion, enemyLaserTextureRegion);
 
@@ -118,6 +118,7 @@ public class GameScreen implements Screen {
         batch.begin();
 
         detectInput(deltaTime);
+        moveEnemies(deltaTime);
 
         playerShip.update(deltaTime);
         enemyShip.update(deltaTime);
@@ -143,6 +144,31 @@ public class GameScreen implements Screen {
         batch.end();
     }
 
+    private void moveEnemies(float deltaTime) {
+
+        float leftLimit, rightLimit, upLimit, downLimit;
+        leftLimit = -enemyShip.boundingBox.x;
+        downLimit = (float) WORLD_HEIGHT / 2 - enemyShip.boundingBox.y;
+        rightLimit = WORLD_WIDTH - enemyShip.boundingBox.x - enemyShip.boundingBox.width;
+        upLimit = WORLD_HEIGHT - enemyShip.boundingBox.y - enemyShip.boundingBox.height;
+
+        float xMove = enemyShip.direction.x * enemyShip.movementSpeed * deltaTime;
+        float yMove = enemyShip.direction.y * enemyShip.movementSpeed * deltaTime;
+
+        if (xMove > 0)
+            xMove = Math.min(xMove, rightLimit);
+        else
+            xMove = Math.max(xMove, leftLimit);
+
+        if (yMove > 0)
+            yMove = Math.min(yMove, upLimit);
+        else
+            yMove = Math.max(yMove, downLimit);
+
+        enemyShip.translate(xMove, yMove);
+    }
+
+
     private void detectInput(float deltaTime) {
 
         //keyboard
@@ -150,7 +176,7 @@ public class GameScreen implements Screen {
         leftLimit = -playerShip.boundingBox.x;
         downLimit = -playerShip.boundingBox.y;
         rightLimit = WORLD_WIDTH - playerShip.boundingBox.x - playerShip.boundingBox.width;
-        upLimit = WORLD_HEIGHT / 2 - playerShip.boundingBox.y - playerShip.boundingBox.height;
+        upLimit = (float) WORLD_HEIGHT / 2 - playerShip.boundingBox.y - playerShip.boundingBox.height;
 
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && rightLimit > 0) {
             playerShip.translate(Math.min(playerShip.movementSpeed * deltaTime, rightLimit), 0f);
@@ -177,8 +203,8 @@ public class GameScreen implements Screen {
             touchPoint = viewport.unproject(touchPoint);
 
             //calculate x + y differences
-            Vector2 playerShipCentre = new Vector2(playerShip.boundingBox.x + playerShip.boundingBox.width/2,
-                    playerShip.boundingBox.y + playerShip.boundingBox.height/2);
+            Vector2 playerShipCentre = new Vector2(playerShip.boundingBox.x + playerShip.boundingBox.width / 2,
+                    playerShip.boundingBox.y + playerShip.boundingBox.height / 2);
 
             float touchDistance = touchPoint.dst(playerShipCentre);
 
