@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Snippets"
         tools:targetApi="31">
         <activity
+            android:name=".A0_AccueilActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity05.A53_Spinner"
             android:exported="false" />
         <activity
@@ -21,7 +24,7 @@
             android:name=".activity01.A16_GridLayout"
             android:exported="false" />
         <activity
-            android:name=".A0_AccueilActivity"
+            android:name=".activity05.A54_RecycleView"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

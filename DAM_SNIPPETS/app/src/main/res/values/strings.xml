@@ -15,4 +15,39 @@
     </string-array>
 
 
+    <string-array name="stagiaires">
+        <item>Tri</item>
+        <item>Philippe</item>
+        <item>Mathias</item>
+        <item>Inan</item>
+        <item>Pierre1</item>
+        <item>Pierre2</item>
+        <item>Jason</item>
+        <item>Nicolas</item>
+        <item>Damien</item>
+        <item>Jérémie</item>
+        <item>Michel</item>
+        <item>Imhotépu</item>
+        <item>Yacouba</item>
+        <item>Le boss</item>
+    </string-array>
+
+    <string-array name="descs">
+        <item>01 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+        <item>02 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+        <item>03 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+        <item>04 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+        <item>05 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+        <item>06 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+        <item>07 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+        <item>08 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+        <item>09 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+        <item>10 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+        <item>11 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+        <item>12 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+        <item>13 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+        <item>14 Lorem ipsum, fez ffezfezfez, fdsf fe zfe z, dzaffe</item>
+    </string-array>
+
+
 </resources>
