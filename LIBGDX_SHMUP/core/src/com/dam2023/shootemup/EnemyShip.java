@@ -2,8 +2,13 @@ package com.dam2023.shootemup;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 
 public class EnemyShip extends Ship {
+
+    Vector2 direction;
+    float timeSinceLastDirectionChange = 0;
+    float directionChangeFrequency = 0.75f;
 
     public EnemyShip(float xCentre, float yCentre,
                      float width, float height,
@@ -12,6 +17,28 @@ public class EnemyShip extends Ship {
                      TextureRegion shipTR, TextureRegion shieldTR, TextureRegion laserTR) {
 
         super(xCentre, yCentre, width, height, movementSpeed, shield, laserW, laserH, laserMS, timeBetweenShots, shipTR, shieldTR, laserTR);
+
+        direction = new Vector2(0, -1); // heading to player
+    }
+
+    private void randomizeDirection() {
+        double bearing = ShootEmUp.random.nextDouble() * 6.283185; // 0 to 2*PI
+        direction.x = (float) Math.sin(bearing);
+        direction.y = (float) Math.cos(bearing);
+    }
+
+    @Override
+    public void update(float deltaTime) {
+        super.update(deltaTime);
+        timeSinceLastDirectionChange += deltaTime;
+        if (timeSinceLastDirectionChange > directionChangeFrequency) {
+            randomizeDirection();
+            timeSinceLastDirectionChange -= directionChangeFrequency;
+        }
+    }
+
+    public void setDirection(Vector2 direction) {
+        this.direction = direction;
     }
 
     @Override
