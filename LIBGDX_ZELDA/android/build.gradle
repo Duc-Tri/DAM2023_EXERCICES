@@ -17,7 +17,7 @@ android {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "com.dam2023.libgdx_zelda"
+        applicationId "com.dam2023.zelda"
         minSdkVersion 14
         targetSdkVersion 33
         versionCode 1
@@ -82,7 +82,7 @@ task run(type: Exec) {
     }
 
     def adb = path + "/platform-tools/adb"
-    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.dam2023.libgdx_zelda/com.dam2023.libgdx_zelda.AndroidLauncher'
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.dam2023.zelda/com.dam2023.zelda.AndroidLauncher'
 }
 
 eclipse.project.name = appName + "-android"

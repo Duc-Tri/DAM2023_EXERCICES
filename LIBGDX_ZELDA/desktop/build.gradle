@@ -2,7 +2,7 @@ sourceCompatibility = 1.8
 sourceSets.main.java.srcDirs = [ "src/" ]
 sourceSets.main.resources.srcDirs = ["../assets"]
 
-project.ext.mainClassName = "com.dam2023.libgdx_zelda.DesktopLauncher"
+project.ext.mainClassName = "com.dam2023.zelda.DesktopLauncher"
 project.ext.assetsDir = new File("../assets")
 
 import org.gradle.internal.os.OperatingSystem
@@ -39,6 +39,10 @@ task dist(type: Jar) {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
     with jar
+}
+
+dependencies {
+    runtimeOnly 'org.openjfx:javafx:20-ea+11'
 }
 
 

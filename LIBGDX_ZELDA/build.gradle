@@ -9,7 +9,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.2'
+        classpath 'com.android.tools.build:gradle:7.4.1'
         
 
     }
@@ -20,7 +20,7 @@ allprojects {
 
     version = '1.0'
     ext {
-        appName = "libGDX Zelda"
+        appName = "ZELDA"
         gdxVersion = '1.11.0'
         roboVMVersion = '2.3.16'
         box2DLightsVersion = '1.5'
