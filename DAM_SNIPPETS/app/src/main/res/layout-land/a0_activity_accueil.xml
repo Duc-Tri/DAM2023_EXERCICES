@@ -9,26 +9,16 @@
     tools:context=".A0_AccueilActivity">
 
     <TextView
-        android:id="@+id/a5_list_layouts"
+        android:id="@+id/a0_simple_layouts"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#EFA6CC"
-        android:text="list layouts"
+        android:background="#6CD555"
+        android:text="Layouts"
         android:textSize="34sp"
         android:theme="@style/TexteAccueil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRecycler"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/a0_simple_layouts"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#A6DD9A"
-        android:text="Simple Layouts"
-        android:textSize="34sp"
-        android:theme="@style/TexteAccueil"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -39,8 +29,8 @@
         android:text="Linear Layout"
         android:textSize="20sp"
         android:theme="@style/TexteAccueil"
-        app:layout_constraintEnd_toStartOf="@id/tvFrameLayout"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvFrameLayout"
         app:layout_constraintTop_toBottomOf="@+id/a0_simple_layouts" />
 
     <TextView
@@ -68,7 +58,7 @@
 
         android:theme="@style/TexteAccueil"
         app:layout_constraintBottom_toBottomOf="@+id/tvFrameLayout"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvGridLayout"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tvFrameLayout"
         app:layout_constraintTop_toTopOf="@+id/tvFrameLayout"
@@ -83,9 +73,9 @@
         android:textSize="20sp"
 
         android:theme="@style/TexteAccueil"
-        app:layout_constraintBottom_toBottomOf="@+id/tvRecycler"
-
         app:layout_constraintEnd_toStartOf="@id/tvVideo"
+
+        app:layout_constraintBottom_toBottomOf="@+id/tvRecycler"
         app:layout_constraintStart_toEndOf="@+id/tvRecycler"
         app:layout_constraintTop_toBottomOf="@+id/tvGridLayout" />
 
@@ -111,9 +101,10 @@
         android:text="Grid Layout"
         android:textSize="20sp"
         android:theme="@style/TexteAccueil"
+        app:layout_constraintStart_toEndOf="@id/tvAnimation"
         app:layout_constraintEnd_toStartOf="@id/tvListLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLinearLayout" />
+        app:layout_constraintTop_toTopOf="@+id/tvAnimation"
+        app:layout_constraintBottom_toBottomOf="@id/tvAnimation"/>
 
     <TextView
         android:id="@+id/tvListLayout"
@@ -156,18 +147,6 @@
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvGridLayout" />
-
-    <TextView
-        android:id="@+id/a5_multimedia"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#A6B0EF"
-        android:text="2"
-        android:textSize="34sp"
-        android:theme="@style/TexteAccueil"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="431dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
