@@ -18,16 +18,15 @@ public class Player  {
     private TextureAtlas textureAtlas;
     private TextureRegion textureRegion;
     private Sprite sprite;
-
     private float x = 0;
     private float y = 0;
-
     public void initializeSprite() {
         box = new Rectangle(0,0,0,0);
         batch = new SpriteBatch();
         textureAtlas = new TextureAtlas(Gdx.files.internal("tiny_16x16.atlas"));
         textureRegion = textureAtlas.findRegion("UP_1");
         sprite = new Sprite(textureRegion);
+        sprite.scale(2.0f);
     }
 
     public Sprite getSprite() {
@@ -128,6 +127,7 @@ public class Player  {
         Sprite tempSprite = new Sprite(textureRegion);
         tempSprite.setX(tempSpriteX);
         tempSprite.setY(tempSpriteY);
+        tempSprite.scale(2.0f);
         this.setSprite( tempSprite);
 //        playerSprite = player.getSprite();
     }
