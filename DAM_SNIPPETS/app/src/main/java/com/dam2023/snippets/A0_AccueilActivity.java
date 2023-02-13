@@ -17,6 +17,7 @@ import com.dam2023.snippets.activity04.A41_Audio_Auto;
 import com.dam2023.snippets.activity05.A51_Video_Player;
 import com.dam2023.snippets.activity05.A52_List_Layout;
 import com.dam2023.snippets.activity05.A53_Spinner;
+import com.dam2023.snippets.activity05.A54_AdapterRecyclerView;
 
 public class A0_AccueilActivity extends AppCompatActivity {
 
@@ -40,6 +41,19 @@ public class A0_AccueilActivity extends AppCompatActivity {
         setListenerForListLayout();
 
         setListenerForSpinner();
+
+        setListenerForRecyclerView();
+    }
+
+    private void setListenerForRecyclerView() {
+        TextView tvRecycler = findViewById(R.id.tvRecycler);
+        tvRecycler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(A0_AccueilActivity.this, A54_AdapterRecyclerView.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setListenerForSpinner() {
@@ -51,7 +65,6 @@ public class A0_AccueilActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     private void setListenerForListLayout() {
