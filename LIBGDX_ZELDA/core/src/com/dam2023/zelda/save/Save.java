@@ -2,9 +2,7 @@ package com.dam2023.zelda.save;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.math.Rectangle;
 import com.dam2023.zelda.entities.instances.InstanceEntity;
-import com.dam2023.zelda.entities.instances.InstanceLivingEntity;
 import com.dam2023.zelda.map.Chunk;
 import com.dam2023.zelda.map.Map;
 import com.dam2023.zelda.structures.InstanceStructure;
@@ -18,7 +16,7 @@ import java.util.Iterator;
  */
 public class Save
 {
-    public static String saveName = "save";
+    public static final String saveName = "save";
 
     public static void loadOrCreateSave()
     {
@@ -53,11 +51,11 @@ public class Save
                         if (chunkData.exists())
                         {
                             // Si le fichier chunk existe, on le charge en mémoire
-                            World.getCurrentMap().loadChunkFile(x + xChunk, y + yChunk, chunkData);
+                            World.getCurrentMap().loadChunkFile();
                         }
                         else
                         {
-                            saveChunk(World.getCurrentMap().getChunk(x + xChunk, y + yChunk), false);
+                            saveChunk(World.getCurrentMap().getChunk(), false);
                         }
                     }
                 }

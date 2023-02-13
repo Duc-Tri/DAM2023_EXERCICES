@@ -18,7 +18,7 @@ public class ItemSword extends Item
     private static final int regionWidth = 16;
 
     // Ensemble des frames de textures possible
-    public TextureRegion[][] textureFrames;
+    public final TextureRegion[][] textureFrames;
 
     // Animations
     public Animation animSlashTop;
@@ -30,10 +30,10 @@ public class ItemSword extends Item
     public final float slashTime;
 
     // Tous les sonds qui peuvent êtres joués lors du slash de l'épée
-    public List<Sound> slashSounds;
+    public final List<Sound> slashSounds;
 
     // L'allonge de l'epee en pixels
-    public float allonge;
+    public final float allonge;
 
     public ItemSword(String textureName, String name, int id, float slashTime, float allonge)
     {

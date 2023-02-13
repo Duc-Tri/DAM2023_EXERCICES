@@ -15,11 +15,11 @@ public class Tile
     public static final int TILE_SIZE = 16;
 
     // ID du Tile
-    protected int id;
+    protected final int id;
     // Le nom du tile à charger dans les assets
-    protected String name;
+    protected final String name;
     // La texture chargée
-    protected Texture texture;
+    protected final Texture texture;
 
     public Tile(String name, int id)
     {

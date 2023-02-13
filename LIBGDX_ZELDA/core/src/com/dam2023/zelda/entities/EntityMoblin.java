@@ -8,7 +8,7 @@ import com.dam2023.zelda.entities.instances.InstanceEntityMoblin;
  */
 public class EntityMoblin extends EntityHostileMonster
 {
-    private EntityMoblin.MoblinType type;
+    private final EntityMoblin.MoblinType type;
 
     public EntityMoblin(String textureName, String name, int id, int maxLife, float damage, float moveSpeed, MoblinType type)
     {

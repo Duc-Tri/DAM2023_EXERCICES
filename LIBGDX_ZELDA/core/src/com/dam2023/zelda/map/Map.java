@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.dam2023.zelda.entities.Entities;
-import com.dam2023.zelda.entities.EntityMoblin;
 import com.dam2023.zelda.entities.Orientation;
 import com.dam2023.zelda.entities.instances.*;
 import com.dam2023.zelda.save.Save;
@@ -17,11 +16,9 @@ import com.dam2023.zelda.world.World;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -41,7 +38,7 @@ public class Map
     public int yChunk;
 
     // Les entités présentes sur la map
-    public CopyOnWriteArrayList<InstanceEntity> entities;
+    public final CopyOnWriteArrayList<InstanceEntity> entities;
 
     // Les chunks chargés de la map
     public ConcurrentHashMap<Integer, ConcurrentHashMap<Integer, Chunk>> chunks;
@@ -51,7 +48,7 @@ public class Map
 
     public Map()
     {
-        entities = new CopyOnWriteArrayList<InstanceEntity>();
+        entities = new CopyOnWriteArrayList<>();
     }
 
     public void initMap()
@@ -59,11 +56,11 @@ public class Map
         xChunk = World.getHero().getXChunk();
         yChunk = World.getHero().getYChunk();
 
-        chunks = new ConcurrentHashMap<Integer, ConcurrentHashMap<Integer, Chunk>>();
+        chunks = new ConcurrentHashMap<>();
 
         for (int i = xChunk - MAP_CHUNK_SIZE_HALF; i <= xChunk + MAP_CHUNK_SIZE_HALF; i++)
         {
-            chunks.put(i, new ConcurrentHashMap<Integer, Chunk>());
+            chunks.put(i, new ConcurrentHashMap<Integer,Chunk>());
             for (int j = yChunk - MAP_CHUNK_SIZE_HALF; j <= yChunk + MAP_CHUNK_SIZE_HALF; j++)
             {
                 Chunk chunk = new Chunk(i, j);
@@ -215,7 +212,7 @@ public class Map
                 {
                     if (!chunks.containsKey(i))
                     {
-                        chunks.put(i, new ConcurrentHashMap<Integer, Chunk>());
+                        chunks.put(i, new ConcurrentHashMap<Integer,Chunk>());
                     }
                     if (!chunks.get(i).containsKey(yChunk - MAP_CHUNK_SIZE_HALF))
                     {
@@ -248,7 +245,7 @@ public class Map
                 {
                     if (chunks.get(i) == null)
                     {
-                        chunks.put(i, new ConcurrentHashMap<Integer, Chunk>());
+                        chunks.put(i, new ConcurrentHashMap<Integer,Chunk>());
                     }
                     if (!chunks.get(i).containsKey(yChunk + MAP_CHUNK_SIZE_HALF))
                     {
@@ -280,7 +277,7 @@ public class Map
             case LEFT:
                 if (!chunks.containsKey(xChunk - MAP_CHUNK_SIZE_HALF))
                 {
-                    chunks.put(xChunk - MAP_CHUNK_SIZE_HALF, new ConcurrentHashMap<Integer, Chunk>());
+                    chunks.put(xChunk - MAP_CHUNK_SIZE_HALF, new ConcurrentHashMap<Integer,Chunk>());
                 }
                 for (int j = yChunk - MAP_CHUNK_SIZE_HALF; j <= yChunk + MAP_CHUNK_SIZE_HALF; j++)
                 {
@@ -314,7 +311,7 @@ public class Map
             case RIGHT:
                 if (!chunks.containsKey(xChunk + MAP_CHUNK_SIZE_HALF))
                 {
-                    chunks.put(xChunk + MAP_CHUNK_SIZE_HALF, new ConcurrentHashMap<Integer, Chunk>());
+                    chunks.put(xChunk + MAP_CHUNK_SIZE_HALF, new ConcurrentHashMap<Integer,Chunk>());
                 }
                 for (int j = yChunk - MAP_CHUNK_SIZE_HALF; j <= yChunk + MAP_CHUNK_SIZE_HALF; j++)
                 {
@@ -406,14 +403,14 @@ public class Map
         }
     }
 
-    public void loadChunkFile(int x, int y, FileHandle file)
+    public void loadChunkFile()
     {
         /*
         loadChunkFile(chunks[x - xChunk + 1][y - yChunk + 1], file);
         */
     }
 
-    public Chunk getChunk(int x, int y)
+    public Chunk getChunk()
     {
         /*
         return chunks[x - xChunk + 1][y - yChunk + 1];
@@ -425,11 +422,9 @@ public class Map
      * Retourne la TileEntity associée aux coordonnées passées en paramètres.
      * Renvoie null si il n'y a pas de TileEntity correspondante.
      *
-     * @param x La coordonnée x en Tiles
-     * @param y La coordonnée y en Tiles
      * @return La TileEntity associée aux coordonées
      */
-    public TileEntity getTileEntity(int x, int y)
+    public TileEntity getTileEntity()
     {
         /*
         return tileEntities.get(new Pair<Integer, Integer>(x, y));

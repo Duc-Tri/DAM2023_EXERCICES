@@ -12,7 +12,7 @@ public class Structures
     public static StructureHouse red_house;
     public static StructureTree tree;
 
-    private static HashMap<Integer, Structure> structures = new HashMap<Integer, Structure>();
+    private static final HashMap<Integer, Structure> structures = new HashMap<>();
 
     public static void registerStructures()
     {

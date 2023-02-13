@@ -15,7 +15,7 @@ public class World
     // Le Heros à afficher
     private static InstanceEntityHero hero;
     // Le variable servant à la génération d'évenements Randoms
-    public static Random random = new Random();
+    public static final Random random = new Random();
 
     public static Map getCurrentMap()
     {

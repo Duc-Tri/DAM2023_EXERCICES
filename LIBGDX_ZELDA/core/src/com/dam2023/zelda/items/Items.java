@@ -11,7 +11,7 @@ public class Items
 
     public static ItemSword sword;
 
-    private static HashMap<Integer, Item> items = new HashMap<Integer, Item>();
+    private static final HashMap<Integer, Item> items = new HashMap<>();
 
     public static void registerItems()
     {

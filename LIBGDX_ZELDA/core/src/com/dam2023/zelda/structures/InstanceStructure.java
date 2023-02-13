@@ -10,11 +10,11 @@ import java.util.ArrayList;
  */
 public class InstanceStructure
 {
-    public Structure structure;
-    public float x;
-    public float y;
+    public final Structure structure;
+    public final float x;
+    public final float y;
 
-    public ArrayList<Rectangle> collisions;
+    public final ArrayList<Rectangle> collisions;
 
     public InstanceStructure(Structure structure, float x, float y)
     {

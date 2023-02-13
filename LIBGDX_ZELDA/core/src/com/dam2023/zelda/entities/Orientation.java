@@ -13,7 +13,7 @@ public enum Orientation
     BOTTOM,
     LEFT;
 
-    private static Random random = new Random();
+    private static final Random random = new Random();
     public static Orientation randomOrientation()
     {
         int id = random.nextInt(Orientation.class.getEnumConstants().length);

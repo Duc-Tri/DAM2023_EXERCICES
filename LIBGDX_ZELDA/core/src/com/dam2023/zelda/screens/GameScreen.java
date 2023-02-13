@@ -18,9 +18,9 @@ import com.dam2023.zelda.world.World;
  */
 public class GameScreen implements Screen
 {
-    private Zelda game;
-    private SpriteBatch batch;
-    private OrthographicCamera camera;
+    private final Zelda game;
+    private final SpriteBatch batch;
+    private final OrthographicCamera camera;
     private float time;
 
     public static float TIME_STEP = 1/60f;
@@ -72,7 +72,7 @@ public class GameScreen implements Screen
         batch.end();
     }
 
-    private float accumulator = 0;
+    private final float accumulator = 0;
 
     @Override
     public void resize(int width, int height)

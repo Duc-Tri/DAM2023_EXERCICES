@@ -30,7 +30,7 @@ public class Tiles
     public static Tile toitBleuSupMid;
     public static Tile toitBleuSupGauche;
 
-    private static HashMap<Integer, Tile> tiles = new HashMap<Integer, Tile>();
+    private static final HashMap<Integer, Tile> tiles = new HashMap<>();
 
     public static void registerTiles()
     {

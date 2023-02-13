@@ -11,13 +11,13 @@ import com.dam2023.zelda.tiles.Tile;
 public abstract class LivingEntity extends Entity
 {
     // Vie totale
-    protected float maxLife;
+    protected final float maxLife;
 
     // Dégats infligés
-    protected float damage;
+    protected final float damage;
 
     // Vitesse de déplacement
-    protected float moveSpeed;
+    protected final float moveSpeed;
 
     // Ensemble des frames de textures possible
     public TextureRegion[][] textureFrames;

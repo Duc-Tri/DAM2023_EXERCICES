@@ -15,7 +15,6 @@ import com.dam2023.zelda.structures.InstanceStructure;
 import com.dam2023.zelda.tiles.Tile;
 import com.dam2023.zelda.world.World;
 
-import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -30,7 +29,7 @@ public abstract class InstanceEntityHostileMonster extends InstanceLivingEntity
 
     private static final float PASSIVE_SPEED_MODIFICATOR = 0.7f;
     // Le temps de récupération de l'entité après avoir subit un coup
-    public static float RECOVERY_TIME = 0.2f;
+    public static final float RECOVERY_TIME = 0.2f;
 
     public enum State
     {

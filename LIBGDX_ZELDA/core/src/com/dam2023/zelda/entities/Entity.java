@@ -12,16 +12,16 @@ import com.dam2023.zelda.entities.instances.InstanceEntity;
 public class Entity
 {
     // Identifiant
-    protected int id;
+    protected final int id;
 
     // Le chemin qui mène aux tiles dans les assets
     protected static final String PATH = "sprites/entities/";
 
-    private String textureName;
-    private String name;
+    private final String textureName;
+    private final String name;
 
     // La texture chargée
-    protected Texture texture;
+    protected final Texture texture;
 
     public Entity(String textureName, String name, int id)
     {
@@ -44,7 +44,7 @@ public class Entity
     /**
      * Dessine l'entity à la position donnée en Pixels
      */
-    public void draw(SpriteBatch batch, float deltaTime, float xPos, float yPos)
+    public void draw(SpriteBatch batch, float xPos, float yPos)
     {
         batch.draw(texture, xPos, yPos);
     }

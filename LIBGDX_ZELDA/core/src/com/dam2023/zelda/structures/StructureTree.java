@@ -1,7 +1,5 @@
 package com.dam2023.zelda.structures;
 
-import com.dam2023.zelda.tiles.Tile;
-
 /**
  * Created by Aurelien on 17/01/2016.
  */

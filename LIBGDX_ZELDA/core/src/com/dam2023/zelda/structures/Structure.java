@@ -2,7 +2,6 @@ package com.dam2023.zelda.structures;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.dam2023.zelda.entities.instances.InstanceEntity;
@@ -26,9 +25,9 @@ public abstract class Structure
 
     private static final List replaceableTiles = Arrays.asList(Tiles.herbe, Tiles.fleurs, Tiles.hautes_herbes);
 
-    public int id;
-    public String name;
-    public Texture texture;
+    public final int id;
+    public final String name;
+    public final Texture texture;
 
     protected ArrayList<Rectangle> collisionRectangles;
 
@@ -41,7 +40,7 @@ public abstract class Structure
 
     public ArrayList<Rectangle> getCollisionRectangles(float x, float y)
     {
-        collisionRectangles = new ArrayList<Rectangle>();
+        collisionRectangles = new ArrayList<>();
         collisionRectangles.add(new Rectangle(x, y, texture.getWidth(), texture.getHeight()));
         return collisionRectangles;
     }

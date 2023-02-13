@@ -7,15 +7,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
-import com.dam2023.zelda.Arc2D;
-import com.dam2023.zelda.RectBounds;
+import com.dam2023.zelda.javafx.Arc2D;
+import com.dam2023.zelda.javafx.RectBounds;
 import com.dam2023.zelda.entities.Entities;
 import com.dam2023.zelda.entities.EntityHero;
 import com.dam2023.zelda.entities.Orientation;
 import com.dam2023.zelda.items.Item;
 import com.dam2023.zelda.items.ItemSword;
 import com.dam2023.zelda.items.Items;
-import com.dam2023.zelda.map.Map;
 import com.dam2023.zelda.sound.Sounds;
 import com.dam2023.zelda.structures.InstanceStructure;
 import com.dam2023.zelda.tiles.Tile;
@@ -36,7 +35,7 @@ public class InstanceEntityHero extends InstanceLivingEntity implements InputPro
     protected float swordPosX, swordPosY;
 
     // L'epee tenue
-    ItemSword sword;
+    final ItemSword sword;
 
     // Le restant avant de finir l'animation de coup d'epee
     public float remainingSwordTime;
@@ -103,7 +102,7 @@ public class InstanceEntityHero extends InstanceLivingEntity implements InputPro
             float newX = this.x;
 
 
-            ArrayList<Rectangle> collisions = new ArrayList<Rectangle>();
+            ArrayList<Rectangle> collisions = new ArrayList<>();
             for (InstanceEntity entity : World.getCurrentMap().entities)
             {
                 collisions.add(entity.getCollisionBounds());
@@ -117,10 +116,7 @@ public class InstanceEntityHero extends InstanceLivingEntity implements InputPro
                 {
                     for (InstanceStructure structure : World.getCurrentMap().chunks.get(i).get(j).structures)
                     {
-                        for (Rectangle rectangle : structure.collisions)
-                        {
-                            collisions.add(rectangle);
-                        }
+                        collisions.addAll(structure.collisions);
                     }
                 }
             }
@@ -511,7 +507,7 @@ public class InstanceEntityHero extends InstanceLivingEntity implements InputPro
         boolean hasVerticalCollision = false;
         boolean hasHorizontalCollison = false;
 
-        ArrayList<Rectangle> collisions = new ArrayList<Rectangle>();
+        ArrayList<Rectangle> collisions = new ArrayList<>();
         for (InstanceEntity entity : World.getCurrentMap().entities)
         {
             collisions.add(entity.getCollisionBounds());
@@ -525,10 +521,7 @@ public class InstanceEntityHero extends InstanceLivingEntity implements InputPro
             {
                 for (InstanceStructure structure : World.getCurrentMap().chunks.get(i).get(j).structures)
                 {
-                    for (Rectangle rectangle : structure.collisions)
-                    {
-                        collisions.add(rectangle);
-                    }
+                    collisions.addAll(structure.collisions);
                 }
             }
         }
@@ -566,12 +559,8 @@ public class InstanceEntityHero extends InstanceLivingEntity implements InputPro
         if (directionUpdated != null)
         {
             // On affiche la direction de poussée que si la collision se produit dans le même sens que la direction d'avancement du personnage
-            boolean isPushing = false;
-            if (((directionUpdated == Orientation.LEFT || directionUpdated == Orientation.RIGHT) && hasHorizontalCollison)
-                    || ((directionUpdated == Orientation.TOP || directionUpdated == Orientation.BOTTOM) && hasVerticalCollision))
-            {
-                isPushing = true;
-            }
+            boolean isPushing = ((directionUpdated == Orientation.LEFT || directionUpdated == Orientation.RIGHT) && hasHorizontalCollison)
+                    || ((directionUpdated == Orientation.TOP || directionUpdated == Orientation.BOTTOM) && hasVerticalCollision);
             if (brandishingSword)
             {
                 isPushing = false;

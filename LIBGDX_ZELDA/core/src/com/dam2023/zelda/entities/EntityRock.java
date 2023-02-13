@@ -2,7 +2,6 @@ package com.dam2023.zelda.entities;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.dam2023.zelda.entities.instances.InstanceEntity;
-import com.dam2023.zelda.entities.instances.InstanceEntityMoblin;
 import com.dam2023.zelda.entities.instances.InstanceEntityRock;
 import com.dam2023.zelda.tiles.Tile;
 

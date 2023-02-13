@@ -4,8 +4,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.dam2023.zelda.animations.Animations;
-import com.dam2023.zelda.entities.instances.InstanceEntity;
-import com.dam2023.zelda.entities.instances.InstanceEntityHostileMonster;
 import com.dam2023.zelda.tiles.Tile;
 
 /**

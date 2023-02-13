@@ -35,7 +35,7 @@ public class InstanceEntity
 
     public void draw(SpriteBatch batch, float deltaTime)
     {
-        entity.draw(batch, deltaTime, this.x * Tile.TILE_SIZE, this.y * Tile.TILE_SIZE);
+        entity.draw(batch, this.x * Tile.TILE_SIZE, this.y * Tile.TILE_SIZE);
     }
 
     /**

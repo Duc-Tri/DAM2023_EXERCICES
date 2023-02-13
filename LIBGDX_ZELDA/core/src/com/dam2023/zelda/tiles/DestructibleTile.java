@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public class DestructibleTile extends Tile
 {
-    protected float destroyTime;
-    protected Animation destroyAnimation;
+    protected final float destroyTime;
+    protected final Animation destroyAnimation;
 
     public DestructibleTile(String name, int id, float destroyTime, Animation destroyAnimation)
     {

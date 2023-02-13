@@ -7,7 +7,6 @@ import com.dam2023.zelda.entities.Entities;
 import com.dam2023.zelda.entities.Entity;
 import com.dam2023.zelda.entities.instances.InstanceEntity;
 import com.dam2023.zelda.structures.InstanceStructure;
-import com.dam2023.zelda.structures.Structure;
 import com.dam2023.zelda.structures.Structures;
 import com.dam2023.zelda.tiles.Tile;
 import com.dam2023.zelda.tiles.Tiles;
@@ -24,14 +23,14 @@ public class Chunk
     public static final int CHUNK_TILE_SIZE = 10;
 
     // Tiles formants le chunk
-    protected Tile[][] tiles;
+    protected final Tile[][] tiles;
 
     // Positions
-    public int x;
-    public int y;
+    public final int x;
+    public final int y;
 
     // Structures
-    public ArrayList<InstanceStructure> structures = new ArrayList<InstanceStructure>();
+    public final ArrayList<InstanceStructure> structures = new ArrayList<>();
 
     public Chunk(int x, int y)
     {

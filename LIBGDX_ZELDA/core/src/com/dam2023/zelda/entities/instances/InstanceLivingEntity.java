@@ -12,9 +12,6 @@ import com.dam2023.zelda.map.Map;
 import com.dam2023.zelda.tiles.Tile;
 import com.dam2023.zelda.world.World;
 
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
-
 /**
  * Une InstanceEntity spécifique aux LivingEntities
  */
@@ -42,7 +39,7 @@ public class InstanceLivingEntity extends InstanceEntity
     protected float totalPushTime;
 
     // Le temps de récupération de l'entité après avoir subit un coup
-    public static float RECOVERY_TIME = 0.4f;
+    public static final float RECOVERY_TIME = 0.4f;
     // Le temps actuel de récuperation
     protected float remainingRecoveryTime;
 

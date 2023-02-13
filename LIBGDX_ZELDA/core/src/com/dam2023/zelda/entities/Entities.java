@@ -14,7 +14,7 @@ public class Entities
     public static EntityHostileMonster blueMoblin;
     public static EntityHostileMonster redMoblin;
 
-    private static HashMap<Integer, Entity> entities = new HashMap<Integer, Entity>();
+    private static final HashMap<Integer, Entity> entities = new HashMap<>();
 
     public static void registerEntities()
     {

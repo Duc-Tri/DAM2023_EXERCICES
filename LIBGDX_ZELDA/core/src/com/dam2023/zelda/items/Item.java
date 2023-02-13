@@ -10,16 +10,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Item
 {
     // Identifiant
-    protected int id;
+    protected final int id;
 
     // Le chemin qui mène aux tiles dans les assets
     protected static final String PATH = "sprites/items/";
 
-    private String textureName;
-    private String name;
+    private final String textureName;
+    private final String name;
 
     // La texture chargée
-    protected Texture texture;
+    protected final Texture texture;
 
     public Item(String textureName, String name, int id)
     {
@@ -42,7 +42,7 @@ public class Item
     /**
      * Dessine l'entity à la position donnée en Pixels
      */
-    public void draw(SpriteBatch batch, float deltaTime, float xPos, float yPos)
+    public void draw(SpriteBatch batch, float xPos, float yPos)
     {
         batch.draw(texture, xPos, yPos);
     }
