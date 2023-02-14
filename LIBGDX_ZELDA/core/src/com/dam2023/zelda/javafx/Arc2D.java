@@ -25,13 +25,6 @@ public class Arc2D extends RectangularShape {
     public final static int OPEN = 0;
 
     /**
-     * The closure type for an arc closed by drawing a straight
-     * line segment from the start of the arc segment to the end of the
-     * arc segment.
-     */
-    public final static int CHORD = 1;
-
-    /**
      * The closure type for an arc closed by drawing straight line
      * segments from the start of the arc segment to the center
      * of the full ellipse and from that point to the end of the arc segment.
@@ -88,7 +81,6 @@ public class Arc2D extends RectangularShape {
      * the specified closure type.
      *
      * @param type The closure type for the arc:
-     * {@link #OPEN}, {@link #CHORD}, or {@link #PIE}.
      */
     public Arc2D(int type) {
         setArcType(type);
@@ -109,7 +101,6 @@ public class Arc2D extends RectangularShape {
      * @param start The starting angle of the arc in degrees.
      * @param extent The angular extent of the arc in degrees.
      * @param type The closure type for the arc:
-     * {@link #OPEN}, {@link #CHORD}, or {@link #PIE}.
      */
     public Arc2D(float x, float y, float w, float h,
                  float start, float extent, int type) {
@@ -163,22 +154,7 @@ public class Arc2D extends RectangularShape {
     }
 
     /**
-     * {@inheritDoc}
-     */
-    public void setArc(float x, float y, float w, float h,
-                       float angSt, float angExt, int closure) {
-        this.setArcType(closure);
-        this.x = x;
-        this.y = y;
-        this.width = w;
-        this.height = h;
-        this.start = angSt;
-        this.extent = angExt;
-    }
-
-    /**
      * Returns the arc closure type of the arc: {@link #OPEN},
-     * {@link #CHORD}, or {@link #PIE}.
      * @return One of the integer constant closure types defined
      * in this class.
      * @see #setArcType
@@ -193,7 +169,6 @@ public class Arc2D extends RectangularShape {
      * <CODE>OPEN</CODE>, <CODE>CHORD</CODE>, or <CODE>PIE</CODE>.
      *
      * @param type The integer constant that represents the closure
-     * type of this arc: {@link #OPEN}, {@link #CHORD}, or
      * {@link #PIE}.
      *
      * @throws IllegalArgumentException if <code>type</code> is not
@@ -205,17 +180,6 @@ public class Arc2D extends RectangularShape {
             throw new IllegalArgumentException("invalid type for Arc: "+type);
         }
         this.type = type;
-    }
-
-    /**
-     * {@inheritDoc}
-     * Note that the arc
-     * <a href="Arc2D.html#inscribes">partially inscribes</a>
-     * the framing rectangle of this {@code RectangularShape}.
-     */
-    @Override
-    public void setFrame(float x, float y, float w, float h) {
-        setArc(x, y, w, h, start, extent, type);
     }
 
     /**
@@ -493,79 +457,6 @@ public class Arc2D extends RectangularShape {
         // finally check the rectangle corners inside the arc
         return contains(x, y) || contains(x + w, y) ||
                 contains(x, y + h) || contains(x + w, y + h);
-    }
-
-    /**
-     * Determines whether or not the interior of the arc entirely contains
-     * the specified rectangle.
-     *
-     * @param x The X coordinate of the rectangle's upper-left corner.
-     * @param y The Y coordinate of the rectangle's upper-left corner.
-     * @param w The width of the rectangle.
-     * @param h The height of the rectangle.
-     *
-     * @return <CODE>true</CODE> if the arc contains the rectangle,
-     * <CODE>false</CODE> if the arc doesn't contain the rectangle.
-     */
-    @Override
-    public boolean contains(float x, float y, float w, float h) {
-        if (!(contains(x, y) &&
-                contains(x + w, y) &&
-                contains(x, y + h) &&
-                contains(x + w, y + h))) {
-            return false;
-        }
-        // If the shape is convex then we have done all the testing
-        // we need.  Only PIE arcs can be concave and then only if
-        // the angular extents are greater than 180 degrees.
-        if (type != PIE || Math.abs(extent) <= 180.0) {
-            return true;
-        }
-        // For a PIE shape we have an additional test for the case where
-        // the angular extents are greater than 180 degrees and all four
-        // rectangular corners are inside the shape but one of the
-        // rectangle edges spans across the "missing wedge" of the arc.
-        // We can test for this case by checking if the rectangle intersects
-        // either of the pie angle segments.
-        float halfW = getWidth() / 2f;
-        float halfH = getHeight() / 2f;
-        float xc = x + halfW;
-        float yc = y + halfH;
-        float angle = (float) Math.toRadians(-start);
-        float xe = (float) (xc + halfW * Math.cos(angle));
-        float ye = (float) (yc + halfH * Math.sin(angle));
-        if (Shape.intersectsLine(x, y, w, h, xc, yc, xe, ye)) {
-            return false;
-        }
-        angle += (float) Math.toRadians(-extent);
-        xe = (float) (xc + halfW * Math.cos(angle));
-        ye = (float) (yc + halfH * Math.sin(angle));
-        return !Shape.intersectsLine(x, y, w, h, xc, yc, xe, ye);
-    }
-
-    /**
-     * Returns an iteration object that defines the boundary of the
-     * arc.
-     * This iterator is multithread safe.
-     * <code>Arc2D</code> guarantees that
-     * modifications to the geometry of the arc
-     * do not affect any iterations of that geometry that
-     * are already in process.
-     *
-     * @param tx an optional <CODE>BaseTransform</CODE> to be applied
-     * to the coordinates as they are returned in the iteration, or null
-     * if the untransformed coordinates are desired.
-     *
-     * @return A <CODE>PathIterator</CODE> that defines the arc's boundary.
-     */
-    @Override
-    public PathIterator getPathIterator(BaseTransform tx) {
-        return new ArcIterator(this, tx);
-    }
-
-    @Override
-    public Arc2D copy() {
-        return new Arc2D(x, y, width, height, start, extent, type);
     }
 
     /**

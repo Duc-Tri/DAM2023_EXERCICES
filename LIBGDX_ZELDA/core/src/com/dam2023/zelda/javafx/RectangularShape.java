@@ -84,27 +84,6 @@ public abstract class RectangularShape extends Shape {
     public abstract boolean isEmpty();
 
     /**
-     * Sets the location and size of the framing rectangle of this
-     * <code>Shape</code> to the specified rectangular values.
-     *
-     * @param x the X coordinate of the upper-left corner of the
-     *          specified rectangular shape
-     * @param y the Y coordinate of the upper-left corner of the
-     *          specified rectangular shape
-     * @param w the width of the specified rectangular shape
-     * @param h the height of the specified rectangular shape
-     */
-    public abstract void setFrame(float x, float y, float w, float h);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean contains(Point2D p) {
-        return contains(p.x, p.y);
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override
