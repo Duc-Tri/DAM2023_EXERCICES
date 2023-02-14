@@ -13,4 +13,11 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="tabLayout" parent="Theme.TemplateViewPager">
+        <!--
+        <item name="android:"
+        -->
+    </style>
+
 </resources>
