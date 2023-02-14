@@ -19,7 +19,7 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tlTabLayout"
-        android:layout_width="413dp"
+        android:layout_width="match_parent"
         android:layout_height="127dp"
         android:background="#B683DA"
         app:layout_constraintBottom_toBottomOf="parent"

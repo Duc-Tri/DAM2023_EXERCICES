@@ -11,7 +11,6 @@ public class FragmentAdapter extends FragmentStateAdapter {
 
     public FragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
-
     }
 
     @NonNull
@@ -24,14 +23,13 @@ public class FragmentAdapter extends FragmentStateAdapter {
                 return new F02_Fragment();
             case 2:
                 return new F03_Fragment();
-            default:
-                return null;
         }
+        return null;
     }
 
     @Override
     public int getItemCount() {
-
         return 3;
     }
+
 }
