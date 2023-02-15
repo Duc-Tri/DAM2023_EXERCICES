@@ -1,4 +1,4 @@
-package com.dam2023.testinternet;
+package com.dam2023.dam_pixabay_json;
 
 import org.junit.Test;
 

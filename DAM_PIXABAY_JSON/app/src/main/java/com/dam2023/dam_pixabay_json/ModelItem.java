@@ -1,4 +1,4 @@
-package com.dam2023.dam_pyxabay_json;
+package com.dam2023.dam_pixabay_json;
 
 public class ModelItem {
 

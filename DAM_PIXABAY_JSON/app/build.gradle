@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace 'com.dam2023.dam_pyxabay_json'
+    namespace 'com.dam2023.dam_pixabay_json'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.dam2023.dam_pyxabay_json"
-        minSdk 22
+        applicationId "com.dam2023.dam_pixabay_json"
+        minSdk 24
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -27,6 +27,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+
 dependencies {
 
     // GRAPHISME ==============================================================
@@ -48,4 +49,3 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
-

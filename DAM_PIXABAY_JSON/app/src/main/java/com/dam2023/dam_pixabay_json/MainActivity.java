@@ -1,9 +1,10 @@
-package com.dam2023.dam_pyxabay_json;
+package com.dam2023.dam_pixabay_json;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -74,14 +75,27 @@ public class MainActivity extends AppCompatActivity {
     public void initUI() {
         // lien designer
         recyclerView = findViewById(R.id.rvPixaBayRecyclerView);
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         itemArrayList = new ArrayList<>();
         requestQueue = Volley.newRequestQueue(this);
-
-
     }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        initUI();
+
+//        testHttp();
+        parseJSON();
+        //new RequestTask().execute("http://google.com");
+    }
+
 
     private void parseJSON() {
         search = "moto";
@@ -92,8 +106,10 @@ public class MainActivity extends AppCompatActivity {
         String urlJSONPixabay = "https://pixabay.com/api/?key=" + pixabayKey +
                 "&q=" + search +
                 "&image_type=photo" +
-                //"&orientation=horizontal" +
+                "&orientation=horizontal" +
                 "&pretty=true";
+
+        //urlJSONPixabay = "https://yahoo.com";
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, urlJSONPixabay, null,
                 new Response.Listener<JSONObject>() {
@@ -124,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
                             /** #10.3 On peut alors ajouter le listener **/
                             ////adapterRecycler.setOnItemClickListener(MainActivity.this);
 
+                        } catch (SecurityException e) {
+                            e.printStackTrace();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         } catch (Exception e) {
@@ -142,15 +160,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        initUI();
-        testHttp();
-        //parseJSON();
-    }
 
     private void testHttp() {
         HttpURLConnection con = null;
@@ -179,5 +188,42 @@ public class MainActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
 
+    }
+
+    class RequestTask extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String... uri) {
+            HttpURLConnection con = null;
+            URL url = null;
+            StringBuffer content = new StringBuffer();
+            try {
+                url = new URL("https://yahoo.com");
+                con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("GET");
+
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String inputLine;
+
+                while ((inputLine = in.readLine()) != null) {
+                    content.append(inputLine);
+                }
+
+                Log.i("TAG", content.toString());
+                in.close();
+            } catch (MalformedURLException e) {
+                Log.e("TAG", e.getMessage());
+
+            } catch (IOException e) {
+                Log.e("TAG", e.getMessage());
+            }
+            return content.toString();
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            //Do anything with response..
+        }
     }
 }

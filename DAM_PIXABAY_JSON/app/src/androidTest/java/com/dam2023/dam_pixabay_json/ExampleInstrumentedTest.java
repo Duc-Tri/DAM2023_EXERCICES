@@ -1,4 +1,4 @@
-package com.dam2023.dam_pyxabay_json;
+package com.dam2023.dam_pixabay_json;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.dam2023.dam_pyxabay_json", appContext.getPackageName());
+        assertEquals("com.dam2023.testinternet", appContext.getPackageName());
     }
 }
