@@ -12,19 +12,19 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="2dp">
 
         <ImageView
             android:id="@+id/ivPixabayPhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:layout_margin="10dp"
             app:layout_constraintBottom_toTopOf="@+id/tvPixaBayPhotoCreator"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            tools:srcCompat="" />
 
         <TextView
             android:id="@+id/tvPixaBayPhotoCreator"

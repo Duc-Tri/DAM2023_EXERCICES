@@ -77,7 +77,31 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.MyView
             ivImageView = itemView.findViewById(R.id.ivPixabayPhoto);
             tvCreator = itemView.findViewById(R.id.tvPixaBayPhotoCreator);
             tvLikes = itemView.findViewById(R.id.tvPixaBayPhotoLikes);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (myOnItemClickListener != null) {
+                        int position = getBindingAdapterPosition();
+
+                        if (position != RecyclerView.NO_POSITION) {
+                            myOnItemClickListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
+    }
+
+    // INNER INTERFACE ============================================================================
+    private OnItemClickListener myOnItemClickListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setMyOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.myOnItemClickListener = onItemClickListener;
     }
 
 

@@ -1,8 +1,11 @@
 package com.dam2023.dam_pixabay_json;
 
-import android.os.AsyncTask;
+import static com.dam2023.dam_pixabay_json.Constantes.*;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,7 +30,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterRecycler.OnItemClickListener {
 
     /*
 
@@ -60,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     4] GESTION IMAGES     https://github.com/bumptech/glide
 
-    5] faire holder, model et dapter
+    5] faire HOLDER, MODEL et ADAPTER
 
     6] remplir Mainactivity
 
@@ -91,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
         initUI();
 
-//        testHttp();
         parseJSON();
+        //testHttp();
         //new RequestTask().execute("http://google.com");
     }
 
@@ -101,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         search = "moto";
 
         String pixabayKey = "33662212-c2c62294c592b2fedfeac70ad"; // TRI
-        //String pixabayKey = "33669268-565fad73ad079dae3dee1fc28"; // INAN
 
         String urlJSONPixabay = "https://pixabay.com/api/?key=" + pixabayKey +
                 "&q=" + search +
@@ -137,8 +139,8 @@ public class MainActivity extends AppCompatActivity {
                             // Puis on lie l'adapter au Recycler
                             recyclerView.setAdapter(adapterRecycler);
 
-                            /** #10.3 On peut alors ajouter le listener **/
-                            ////adapterRecycler.setOnItemClickListener(MainActivity.this);
+                            // #10.3 On peut alors ajouter le listener
+                            adapterRecycler.setMyOnItemClickListener(MainActivity.this);
 
                         } catch (SecurityException e) {
                             e.printStackTrace();
@@ -155,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
                 error.printStackTrace();
             }
         });
-/** #9.1 On rempli la request avec les données récupérées **/
+        // #9.1 On rempli la request avec les données récupérées
         requestQueue.add(request);
 
     }
@@ -190,40 +192,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    class RequestTask extends AsyncTask<String, String, String> {
+    @Override
+    public void onItemClick(int position) {
+//        Log.i("TAG", "T'as cliqué à: " + position);
 
-        @Override
-        protected String doInBackground(String... uri) {
-            HttpURLConnection con = null;
-            URL url = null;
-            StringBuffer content = new StringBuffer();
-            try {
-                url = new URL("https://yahoo.com");
-                con = (HttpURLConnection) url.openConnection();
-                con.setRequestMethod("GET");
+        Toast.makeText(this, "T'as cliqué à: " + position, Toast.LENGTH_SHORT).show();
 
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                String inputLine;
-
-                while ((inputLine = in.readLine()) != null) {
-                    content.append(inputLine);
-                }
-
-                Log.i("TAG", content.toString());
-                in.close();
-            } catch (MalformedURLException e) {
-                Log.e("TAG", e.getMessage());
-
-            } catch (IOException e) {
-                Log.e("TAG", e.getMessage());
-            }
-            return content.toString();
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            //Do anything with response..
-        }
+        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+        ModelItem clickItem = itemArrayList.get(position);
+        intent.putExtra(EXTRA_URL, clickItem.getImageUrl());
+        intent.putExtra(EXTRA_CREATOR, clickItem.getCreator());
+        intent.putExtra(EXTRA_LIKES, clickItem.getLikes());
+        startActivity(intent);
     }
+
+
 }
