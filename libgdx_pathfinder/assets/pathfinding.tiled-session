@@ -1,0 +1,44 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "pathfinding.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "pathfinding.tmx": {
+            "scale": 0.8383749999999999,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 400.7753093782616,
+                "y": 400.77530937826157
+            }
+        },
+        "pathfinding.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "C:/Users/DAM_007/Documents/GitHub/DAM2023_EXERCICES/libgdx_pathfinder/assets",
+    "map.height": 50,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 50,
+    "openFiles": [
+        "pathfinding.tsx",
+        "pathfinding.tmx"
+    ],
+    "project": "pathfinding.tiled-project",
+    "recentFiles": [
+        "pathfinding.tsx",
+        "pathfinding.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
