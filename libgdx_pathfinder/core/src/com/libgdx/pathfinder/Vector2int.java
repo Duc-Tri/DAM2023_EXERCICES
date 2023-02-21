@@ -2,6 +2,7 @@ package com.libgdx.pathfinder;
 
 public class Vector2int {
     int myX, myY;
+
     public Vector2int(int x, int y) {
         myX = x;
         myY = y;
@@ -14,7 +15,7 @@ public class Vector2int {
     public float getDistanceEucl(Vector2int point2) {
         int dx = myX - point2.myX;
         int dy = myY - point2.myY;
-        return (float) Math.sqrt(dx*dx + dy*dy);
+        return (float) Math.sqrt(dx * dx + dy * dy);
     }
 
     public boolean equals(Vector2int point2) {
