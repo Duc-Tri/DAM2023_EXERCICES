@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFC107"
+    android:background="#009688"
     android:paddingLeft="32dp"
     android:paddingRight="32dp"
     tools:context=".login.SignUpActivity">
@@ -21,13 +21,13 @@
         app:srcCompat="@drawable/ic_add_a_photo_24" />
 
     <androidx.cardview.widget.CardView
-        app:cardCornerRadius="32dp"
         android:id="@+id/cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="#DF99DE"
+        app:cardCornerRadius="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +123,6 @@
                 android:layout_marginBottom="8dp"
                 android:onClick="btnSignUpClick"
                 android:text="@string/sign_up" />
-
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -6,4 +6,6 @@
     <string name="confirm_password">confirm password</string>
     <string name="sign_up">Sign up</string>
     <string name="reset_password">reset password</string>
+    <string name="reset_password_instruction">reset password instructions sent to : %1$s</string>
+    <string name="enter_correct_email">enter correct email</string>
 </resources>
