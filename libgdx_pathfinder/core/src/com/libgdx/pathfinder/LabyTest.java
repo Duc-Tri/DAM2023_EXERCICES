@@ -92,10 +92,13 @@ public class LabyTest extends ApplicationAdapter {
                 add("BlocMap/Bloc4.tmx");
                 add("BlocMap/Bloc5.tmx");
                 add("BlocMap/Bloc6.tmx");
+                add("BlocMap/Bloc7.tmx");
+                add("BlocMap/Bloc8.tmx");
+                add("BlocMap/Bloc9.tmx");
             }
         };
 
-        MyTiledMap testMap = new MyTiledMap(blocFileNames, 2, 3);
+        MyTiledMap testMap = new MyTiledMap(blocFileNames, 3, 3);
 
         testMapRenderer=new OrthogonalTiledMapRenderer(testMap.getTiledMap());
     }
