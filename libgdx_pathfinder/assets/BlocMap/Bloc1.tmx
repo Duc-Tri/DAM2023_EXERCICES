@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="5" height="5" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
  <tileset firstgid="1" source="ken.tsx"/>
- <layer id="1" name="Calque de Tuiles 1" width="5" height="5">
+ <layer id="1" name="Calque de Tuiles 1" width="5" height="5" visible="0" locked="1">
   <data encoding="csv">
 54,51,51,51,53,
 54,51,51,51,50,
@@ -12,11 +12,11 @@
  </layer>
  <layer id="2" name="Calque de Tuiles 2" width="5" height="5">
   <data encoding="csv">
-41,41,41,41,41,
-41,0,0,0,15,
+41,0,0,41,41,
+41,0,0,0,41,
+41,0,0,0,41,
 41,0,0,0,0,
-41,0,0,0,0,
-41,15,0,0,41
+41,41,41,41,41
 </data>
  </layer>
 </map>

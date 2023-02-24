@@ -14,9 +14,6 @@ public class Maze {
     public static final int MAZE_WIDTH = 40;
     public static final int MAZE_HEIGHT = 30;
 
-
-
-
     public static final int TILE_SIZE = 16;
     private final static Texture tiles = new Texture("tiny_16x16.png");
 
@@ -51,7 +48,6 @@ public class Maze {
             {1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1},
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-
     };
 
     private List<Vector2int> solution;
