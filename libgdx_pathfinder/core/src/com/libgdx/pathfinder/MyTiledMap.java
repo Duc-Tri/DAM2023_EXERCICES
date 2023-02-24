@@ -30,6 +30,9 @@ public class MyTiledMap {
     private int myMapWidth;
     private int myMapHeight;
 
+    // TEMPORAIRE
+    private static Vector2int startPoint, endPoint;
+
     public MyTiledMap(List<String> blocFileNames, int nBlocWidth, int nBlocHeight) {
 
         if (blocFileNames.size() != nBlocHeight * nBlocWidth) {
@@ -87,16 +90,6 @@ public class MyTiledMap {
         System.out.println("LABY ***** DIM:  " + myLayer.getWidth() + " / " + myLayer.getHeight() +
                 " ***** TILE:  " + myLayer.getTileHeight() + " / " + myLayer.getTileWidth());
 
-
-//        for (int cellY = 0; cellY > myMapHeight; cellY++) {
-//            for (int cellX = 0; cellX > myMapWidth; cellX++) {
-//
-//                TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
-//                /////////////////////////////////
-//
-//            }
-//        }
-
         int labyCellY = 0; // ordonnée du Cell dans la labyrinthe
         int labyCellX = 0; // abscisse du Cell dans la labyrinthe
 
@@ -108,9 +101,10 @@ public class MyTiledMap {
         for (TiledMap currentBloc : blocMapList) {
 
             TiledMapTileLayer blocLayer2 = (TiledMapTileLayer) currentBloc.getLayers().get(1); // LE 2E LAYER, LES OBSTACLES
-            int layerHeight = blocLayer2.getHeight();
-            int layerWidth = blocLayer2.getWidth();
 
+            int layerHeight = blocLayer2.getHeight(); // NORMALEMENT TOUJOURS LE MEME POUR TOUS LES MAPS
+
+            int layerWidth = blocLayer2.getWidth(); // NORMALEMENT TOUJOURS LE MEME POUR TOUS LES MAPS
 
             for (int cellBlocX = 0; cellBlocX < layerWidth; cellBlocX++) {
                 for (int cellBlocY = 0; cellBlocY < layerHeight; cellBlocY++) {
@@ -118,7 +112,7 @@ public class MyTiledMap {
                     blocCell = blocLayer2.getCell(cellBlocX, cellBlocY);
 
                     labyCellX = nBlocX * nbTilesX + cellBlocX;
-                    labyCellY = nBlocY * nbTilesY  + cellBlocY;
+                    labyCellY = nBlocY * nbTilesY + cellBlocY;
 
 //                            ((nbBlocHeight - nBlocY) * nbTilesY) -                            (nBlocY * nbTilesY + cellBlocY);
 
@@ -134,23 +128,41 @@ public class MyTiledMap {
 
         }
 
-//        if (blocCell != null)
-//            myLayer.setCell(0, 0, blocCell);
-//        if (blocCell != null)
-//            myLayer.setCell(1, 1, blocCell);
-//        if (blocCell != null)
-//            myLayer.setCell(3, 3, blocCell);
-//
-//        if (blocCell != null)
-//            myLayer.setCell(myMapWidth - 4, myMapHeight - 4, blocCell);
-//
-//        if (blocCell != null)
-//            myLayer.setCell(myMapWidth - 3, myMapHeight - 3, blocCell);
-//
-//        if (blocCell != null)
-//            myLayer.setCell(myMapWidth - 1, myMapHeight - 1, blocCell);
+    }
+
+    // Fonction temporaire très moche !
+    public static void mouseClicked(int screenX, int screenY, int button) {
+
+        int cellX = screenX / 16; // TEMP
+        int cellY = screenY / 16; // screenX, screenY
+
+        System.out.println("mouseClicked === " + cellX + "/" + cellY);
+
+        switch (button) {
+            case 0: // bouton de gauche
+                setStartPoint(cellX, cellY);
+                break;
+
+            case 1: // bouton de droite
+                setFinishPoint(cellX, cellY);
+                break;
+
+            case 2: // bouton du milieu
+                setWallOrEmpty(cellX, cellY);
+                break;
+        }
+    }
 
 
+    private static void setStartPoint(int cellX, int cellY) {
+        startPoint = new Vector2int(cellX, cellY);
+    }
+
+    private static void setFinishPoint(int cellX, int cellY) {
+        endPoint = new Vector2int(cellX, cellY);
+    }
+
+    private static void setWallOrEmpty(int cellX, int cellY) {
     }
 
     public TiledMap getTiledMap() {

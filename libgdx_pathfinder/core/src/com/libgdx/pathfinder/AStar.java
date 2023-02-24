@@ -16,9 +16,9 @@ public class AStar {
     liste ouverte, en effet, il doit d'abord être étudié avant d'être jugé comme bon.
     */
     private List<Node> close;
-    private Maze myMaze;
+    private TempMaze myMaze;
 
-    public AStar(Maze maze) {
+    public AStar(TempMaze maze) {
         this.myMaze = maze;
 
     }

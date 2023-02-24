@@ -5,21 +5,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 public class PathFinder extends ApplicationAdapter {
     SpriteBatch batch;
     Texture img;
-    Maze myMaze;
+    TempMaze myMaze;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
-        myMaze = new Maze();
+        myMaze = new TempMaze();
 
 
 //		img = new Texture("tiny_16x16.png");

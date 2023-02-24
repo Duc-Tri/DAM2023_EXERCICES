@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Maze {
+public class TempMaze {
 
     public static final int MAZE_WIDTH = 40;
     public static final int MAZE_HEIGHT = 30;
@@ -52,7 +52,7 @@ public class Maze {
 
     private List<Vector2int> solution;
 
-    public Maze() {
+    public TempMaze() {
 //Map.of(START, trStart, FINISH, trFinish, FLOOR, trFloor, WALL, trWall);
 
         textureRegions.put(START, trStart);

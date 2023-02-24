@@ -32,13 +32,15 @@ public class LabyTest extends ApplicationAdapter {
     @Override
     public void create() {
 
+        Gdx.input.setInputProcessor(new InputMazePathfinding());
+
         createHolderMap();
         createLayers();
         testMyTileMap();
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 600);
-        camera.translate(-300, -200);
+        camera.translate(0, -360);
         camera.update();
 
         batch = new SpriteBatch();
