@@ -22,25 +22,29 @@ import java.util.List;
 public class LabyTest extends ApplicationAdapter {
     SpriteBatch batch;
     Texture img;
+    Texture pixelsTexture;
 
     TiledMap myBloc;
     TiledMap holder;
     TiledMapRenderer blocRenderer;
     TiledMapRenderer testMapRenderer;
     OrthographicCamera camera;
+    private MyTiledMap myTiledMap;
+    TextureRegion[][] splitTiles;
 
     @Override
     public void create() {
 
-        Gdx.input.setInputProcessor(new InputMazePathfinding());
+        tiles = new Texture(Gdx.files.internal("assets/tiny_16x16.png"));
+        splitTiles = TextureRegion.split(tiles, 16, 16);
 
         createHolderMap();
         createLayers();
-        testMyTileMap();
+        createMyTiledMap();
 
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 600);
-        camera.translate(0, -360);
+        camera.setToOrtho(true, 640, 480); // TRUE = yDOWN
+        //camera.translate(320, 240);
         camera.update();
 
         batch = new SpriteBatch();
@@ -49,7 +53,10 @@ public class LabyTest extends ApplicationAdapter {
 
         blocRenderer = new OrthogonalTiledMapRenderer(myBloc);
 
+        Gdx.input.setInputProcessor(new InputMazePathfinding(myTiledMap));
+
 //		img = new Texture("tiny_16x16.png");
+
     }
 
     private void createHolderMap() {
@@ -76,8 +83,20 @@ public class LabyTest extends ApplicationAdapter {
         testMapRenderer.setView(camera);
         testMapRenderer.render();
 
+        if (myTiledMap.solution != null) {
+            drawSolutionInPixels(batch);
+        }
+
         batch.end();
     }
+
+    public void drawSolutionInPixels(SpriteBatch batch) {
+
+        for (Vector2int v : myTiledMap.solution) {
+            batch.draw(splitTiles[5][0], v.myX * 16, v.myY * 16);
+        }
+    }
+
 
     @Override
     public void dispose() {
@@ -85,7 +104,7 @@ public class LabyTest extends ApplicationAdapter {
 //        img.dispose();
     }
 
-    public void testMyTileMap() {
+    public void createMyTiledMap() {
         List<String> blocFileNames = new ArrayList<String>() {
             {
                 add("BlocMap/Bloc1.tmx");
@@ -100,9 +119,9 @@ public class LabyTest extends ApplicationAdapter {
             }
         };
 
-        MyTiledMap testMap = new MyTiledMap(blocFileNames, 3, 3);
+        myTiledMap = new MyTiledMap(blocFileNames, 3, 3);
 
-        testMapRenderer=new OrthogonalTiledMapRenderer(testMap.getTiledMap());
+        testMapRenderer = new OrthogonalTiledMapRenderer(myTiledMap.getTiledMap());
     }
 
 //    ArrayList<String> gfg = new ArrayList<String>() {
@@ -136,9 +155,6 @@ public class LabyTest extends ApplicationAdapter {
 
 //        font = new BitmapFont();
 //        batch = new SpriteBatch();
-
-        tiles = new Texture(Gdx.files.internal("assets/tiny_16x16.png"));
-        TextureRegion[][] splitTiles = TextureRegion.split(tiles, 16, 16);
 
         map = new TiledMap(); // NOUVEL OBJET TILEMAP
 

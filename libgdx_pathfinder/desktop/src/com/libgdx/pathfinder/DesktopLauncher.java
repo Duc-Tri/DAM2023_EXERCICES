@@ -11,6 +11,7 @@ public class DesktopLauncher {
         config.setForegroundFPS(60);
         config.setTitle("PATHFINDER");
 
+//        new Lwjgl3Application(new PathFinder(), config);
         new Lwjgl3Application(new LabyTest(), config);
     }
 }

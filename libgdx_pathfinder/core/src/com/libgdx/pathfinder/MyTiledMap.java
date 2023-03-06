@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyTiledMap {
+    private AStarTiledMap myAStarTiledMap;
+
     // MAP QUI CONTIENT TOUS LES BLOCS DU LABYRINTHE
     //-------------------------------------------------------------------------
 
@@ -31,7 +33,10 @@ public class MyTiledMap {
     private int myMapHeight;
 
     // TEMPORAIRE
-    private static Vector2int startPoint, endPoint;
+    private Vector2int startPoint, endPoint;
+    public TiledMapTileLayer myLabyrinthLayer; // public for the moment ...
+
+    public List<Vector2int> solution; // public for the moment ...
 
     public MyTiledMap(List<String> blocFileNames, int nBlocWidth, int nBlocHeight) {
 
@@ -77,18 +82,18 @@ public class MyTiledMap {
         int nbTilesY = (int) (map0Properties.get("height"));
         myMapWidth = nbTilesX * nbBlocWidth;
         myMapHeight = nbTilesY * nbBlocHeight;
-        TiledMapTileLayer myLayer = new TiledMapTileLayer(myMapWidth, myMapHeight,
+        myLabyrinthLayer = new TiledMapTileLayer(myMapWidth, myMapHeight,
                 (int) map0Properties.get("tileheight"),
                 (int) map0Properties.get("tilewidth"));
 
-        myLayersContainer.add(myLayer);
+        myLayersContainer.add(myLabyrinthLayer);
 
         // Récupère le conteneur des tilesets pour l'initialiser
         TiledMapTileSets tilesetsContainer = myMap.getTileSets();
         tilesetsContainer.addTileSet(bloc0.getTileSets().getTileSet(0)); // SEULEMENT UN TILESET !!!
 
-        System.out.println("LABY ***** DIM:  " + myLayer.getWidth() + " / " + myLayer.getHeight() +
-                " ***** TILE:  " + myLayer.getTileHeight() + " / " + myLayer.getTileWidth());
+        System.out.println("LABY ***** DIM:  " + myLabyrinthLayer.getWidth() + " / " + myLabyrinthLayer.getHeight() +
+                " ***** TILE:  " + myLabyrinthLayer.getTileHeight() + " / " + myLabyrinthLayer.getTileWidth());
 
         int labyCellY = 0; // ordonnée du Cell dans la labyrinthe
         int labyCellX = 0; // abscisse du Cell dans la labyrinthe
@@ -115,8 +120,8 @@ public class MyTiledMap {
                     labyCellY = nBlocY * nbTilesY + cellBlocY;
 
 //                            ((nbBlocHeight - nBlocY) * nbTilesY) -                            (nBlocY * nbTilesY + cellBlocY);
+                    myLabyrinthLayer.setCell(labyCellX, labyCellY, blocCell);
 
-                    myLayer.setCell(labyCellX, labyCellY, blocCell);
                 }
             }
 
@@ -128,15 +133,21 @@ public class MyTiledMap {
 
         }
 
+        myAStarTiledMap = new AStarTiledMap(this);
+
     }
 
     // Fonction temporaire très moche !
-    public static void mouseClicked(int screenX, int screenY, int button) {
+    public void mouseClicked(int screenX, int screenY, int button) {
 
         int cellX = screenX / 16; // TEMP
         int cellY = screenY / 16; // screenX, screenY
 
-        System.out.println("mouseClicked === " + cellX + "/" + cellY);
+        if (cellX >= myLabyrinthLayer.getWidth() || cellY >= myLabyrinthLayer.getHeight() ||
+                myLabyrinthLayer.getCell(cellX, cellY)!=null)
+            return;
+
+        System.out.println("mouseClicked === " + cellX + "/" + cellY + " ### " + screenX + "/" + screenY);
 
         switch (button) {
             case 0: // bouton de gauche
@@ -153,16 +164,33 @@ public class MyTiledMap {
         }
     }
 
-
-    private static void setStartPoint(int cellX, int cellY) {
+    private void setStartPoint(int cellX, int cellY) {
         startPoint = new Vector2int(cellX, cellY);
+        if (endPoint != null)
+            TestPathfinding();
     }
 
-    private static void setFinishPoint(int cellX, int cellY) {
+    private void setFinishPoint(int cellX, int cellY) {
         endPoint = new Vector2int(cellX, cellY);
+        if (startPoint != null)
+            TestPathfinding();
+    }
+
+    private void TestPathfinding() {
+
+//        myLabyrinthLayer
+
+        solution = myAStarTiledMap.FindPath(new Node(startPoint, null), new Node(endPoint, null));
+
+        String s = ""; // temp str
+        for (Vector2int v : solution) {
+            s += v.myX + "/" + v.myY + " ";
+        }
+        System.out.println("SOLUTION ### " + s);
     }
 
     private static void setWallOrEmpty(int cellX, int cellY) {
+
     }
 
     public TiledMap getTiledMap() {

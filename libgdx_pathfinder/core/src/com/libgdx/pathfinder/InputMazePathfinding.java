@@ -1,8 +1,15 @@
 package com.libgdx.pathfinder;
 
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 
 public class InputMazePathfinding implements InputProcessor {
+
+    MyTiledMap myTiledMap;
+
+    public InputMazePathfinding(MyTiledMap tiledMap) {
+        myTiledMap = tiledMap;
+    }
 
     @Override
     public boolean keyDown(int keycode) {
@@ -23,7 +30,7 @@ public class InputMazePathfinding implements InputProcessor {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         System.out.println("touchDown ***** " + screenX + "/" + screenY + " b:" + button);
 
-        MyTiledMap.mouseClicked(screenX,screenY,button);
+        myTiledMap.mouseClicked(screenX, screenY, button);
 
         return false;
     }

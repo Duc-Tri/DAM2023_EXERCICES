@@ -64,7 +64,7 @@ public class TempMaze {
         startPoint = new Vector2int(1, 1);
         endPoint = new Vector2int(9, 7);
 
-        solution = new AStar(this).FindPath(new Node(startPoint, null), new Node(endPoint, null));
+        solution = new AStarTempMaze(this).FindPath(new Node(startPoint, null), new Node(endPoint, null));
     }
 
     public void render(SpriteBatch batch) {
@@ -93,10 +93,8 @@ public class TempMaze {
                 Gdx.graphics.getHeight() - (y + 1) * TILE_SIZE - SCREEN_YOFFSET);
     }
 
-
     private TextureRegion NumToTile(int i) {
         return textureRegions.get(i);
     }
-
 
 }

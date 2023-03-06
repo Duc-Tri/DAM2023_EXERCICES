@@ -15,7 +15,6 @@ public class PathFinder extends ApplicationAdapter {
         batch = new SpriteBatch();
         myMaze = new TempMaze();
 
-
 //		img = new Texture("tiny_16x16.png");
     }
 

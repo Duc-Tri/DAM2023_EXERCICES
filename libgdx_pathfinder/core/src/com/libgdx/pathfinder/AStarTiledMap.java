@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class AStar {
+public class AStarTiledMap {
 
     /* La première liste, appelée liste ouverte, va contenir tous les noeuds étudiés. Dès que l'algorithme va se pencher sur
     un noeud du graphe, il passera dans la liste ouverte (sauf s'il y est déjà).
@@ -16,11 +16,10 @@ public class AStar {
     liste ouverte, en effet, il doit d'abord être étudié avant d'être jugé comme bon.
     */
     private List<Node> close;
-    private TempMaze myMaze;
+    private MyTiledMap myTiledMap;
 
-    public AStar(TempMaze maze) {
-        this.myMaze = maze;
-
+    public AStarTiledMap(MyTiledMap tiledMap) {
+        this.myTiledMap = tiledMap;
     }
 
     /*Fonction cheminPlusCourt(g:Graphe, objectif:Nœud, depart:Nœud)
@@ -121,15 +120,15 @@ public class AStar {
 
     private boolean isValidNode(Node node) {
 
-        boolean isXValide = node.point.myX < myMaze.array[0].length && node.point.myX >= 0;
+        boolean isXValide = node.point.myX < myTiledMap.myLabyrinthLayer.getWidth() && node.point.myX >= 0;
 
-        boolean isYValide = node.point.myY < myMaze.array.length && node.point.myY >= 0;
+        boolean isYValide = node.point.myY < myTiledMap.myLabyrinthLayer.getHeight() && node.point.myY >= 0;
 
         if (!isXValide || !isYValide) {
             return false;
         }
 
-        int val = myMaze.array[node.point.myY][node.point.myX];
+        int val = (myTiledMap.myLabyrinthLayer.getCell(node.point.myX, node.point.myY) == null) ? 0 : 1; // TEMP
 
         return (val == 0);
     }
