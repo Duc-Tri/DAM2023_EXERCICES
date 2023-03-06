@@ -144,7 +144,7 @@ public class MyTiledMap {
         int cellY = screenY / 16; // screenX, screenY
 
         if (cellX >= myLabyrinthLayer.getWidth() || cellY >= myLabyrinthLayer.getHeight() ||
-                myLabyrinthLayer.getCell(cellX, cellY)!=null)
+                myLabyrinthLayer.getCell(cellX, cellY) != null)
             return;
 
         System.out.println("mouseClicked === " + cellX + "/" + cellY + " ### " + screenX + "/" + screenY);
@@ -182,11 +182,13 @@ public class MyTiledMap {
 
         solution = myAStarTiledMap.FindPath(new Node(startPoint, null), new Node(endPoint, null));
 
+        /*
         String s = ""; // temp str
         for (Vector2int v : solution) {
             s += v.myX + "/" + v.myY + " ";
         }
         System.out.println("SOLUTION ### " + s);
+         */
     }
 
     private static void setWallOrEmpty(int cellX, int cellY) {

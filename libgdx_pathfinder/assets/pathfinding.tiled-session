@@ -3,11 +3,23 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "pathfinding.tmx",
+    "activeFile": "BlocMap/Bloc1.tmx",
     "expandedProjectPaths": [
+        "BlocMap",
         "."
     ],
     "fileStates": {
+        "BlocMap/Bloc1.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 9,
+                "y": 161.33333333333334
+            }
+        },
+        "BlocMap/ken.tsx": {
+            "scaleInDock": 1
+        },
         "pathfinding.tmx": {
             "scale": 0.8383749999999999,
             "selectedLayer": 1,
@@ -29,12 +41,14 @@
     "map.width": 50,
     "openFiles": [
         "pathfinding.tsx",
-        "pathfinding.tmx"
+        "pathfinding.tmx",
+        "BlocMap/Bloc1.tmx"
     ],
     "project": "pathfinding.tiled-project",
     "recentFiles": [
         "pathfinding.tsx",
-        "pathfinding.tmx"
+        "pathfinding.tmx",
+        "BlocMap/Bloc1.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
