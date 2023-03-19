@@ -9,6 +9,13 @@ public class Node {
 
     Node parent;
 
+    public Node(Node par, Vector2int point) {
+        parent = par;
+        this.point = point;
+        cost = 0;
+        heuristic = 0;
+    }
+
     public Node(Vector2int point) {
         parent = null;
         this.point = point;

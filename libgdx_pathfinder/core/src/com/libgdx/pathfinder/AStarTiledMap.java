@@ -65,7 +65,7 @@ public class AStarTiledMap {
             }
 
             for (Node voisin : getNeighbours(u)) {
-                if (!(voisin.existIn(close) || voisin.existWithInferiorCost(openList))) {
+                if (!(voisin.existsIn(close) != null || voisin.existsWithInferiorCostIn(openList))) {
                     voisin.cost = u.cost + 1;
                     voisin.heuristic = voisin.cost + voisin.point.getDistanceManhattan(pointArrivee.point);
 
@@ -115,7 +115,7 @@ public class AStarTiledMap {
     }
 
     private Node makeNeighbour(Node parent, int xDiff, int yDiff) {
-        return new Node(parent.point.myX + xDiff, parent.point.myY + yDiff, parent);
+        return new Node(parent, parent.point.myX + xDiff, parent.point.myY + yDiff);
     }
 
     private boolean isValidNode(Node node) {

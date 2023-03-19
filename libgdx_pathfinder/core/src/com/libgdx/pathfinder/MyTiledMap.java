@@ -180,7 +180,7 @@ public class MyTiledMap {
 
 //        myLabyrinthLayer
 
-        solution = myAStarTiledMap.FindPath(new Node(startPoint, null), new Node(endPoint, null));
+        solution = myAStarTiledMap.FindPath(new Node(null, startPoint), new Node(null, endPoint));
 
         /*
         String s = ""; // temp str
