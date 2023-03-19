@@ -9,15 +9,18 @@ public class Node {
 
     Node parent;
 
-    public Node(Vector2int point, Node parent) {
+    public Node(Vector2int point) {
+        parent = null;
         this.point = point;
         cost = 0;
         heuristic = 0;
-        this.parent = parent;
     }
 
-    public Node(int x, int y, Node parent) {
-        this(new Vector2int(x, y), parent);
+    public Node(Node par, int xDiff, int yDiff) {
+        this.parent = par;
+        this.point = new Vector2int(parent.point.myX + xDiff, parent.point.myY + yDiff);
+        cost = 0;
+        heuristic = 0;
     }
 
     public int compareHeuristic(Node node2) {
@@ -30,24 +33,20 @@ public class Node {
         return -1;
     }
 
-    public boolean existIn(List<Node> close) {
-        close.contains(this);
-
-        return false;
-    }
-
-    public boolean existWithInferiorCost(List<Node> open) {
-        for (Node n : open) {
-            if (this.equals(n)) {
-                return n.cost > this.cost;
-            }
+    public Node existsIn(List<Node> list) {
+        for (Node n : list) {
+            if (n.point.equals(this.point))
+                return n;
         }
+        return null;
+    }
+
+    public boolean existsWithInferiorCostIn(List<Node> list) {
+        Node n = existsIn(list);
+        if (n != null)
+            return n.cost < this.cost;
+
         return false;
     }
-
-    public boolean equals(Node other) {
-        return (this.point.myX == other.point.myX && this.point.myY == other.point.myY);
-    }
-
 }
 

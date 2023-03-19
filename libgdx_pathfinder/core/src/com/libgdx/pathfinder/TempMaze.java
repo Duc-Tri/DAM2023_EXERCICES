@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TempMaze {
+public class Maze {
 
     public static final int MAZE_WIDTH = 40;
     public static final int MAZE_HEIGHT = 30;
@@ -29,60 +29,57 @@ public class TempMaze {
     public static final int FLOOR = 0;
     public static final int PATH = 5;
 
-    public static final Map<Integer, TextureRegion> textureRegions = new HashMap<>();//Map.of(START, trStart, FINISH, trFinish, FLOOR, trFloor, WALL, trWall);
+    public static final Map<Integer, TextureRegion> textureRegions = new HashMap<>();
     private static final int SCREEN_XOFFSET = 100;
     private static final int SCREEN_YOFFSET = 100;
-
-    private Vector2int startPoint, endPoint;
 
     public int[][] array = new int[][]{
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1},
-            {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1},
-            {1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1},
-            {1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1},
-            {1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
-            {1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1},
-            {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1},
-            {1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1},
+            {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+            {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+            {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+            {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+            {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+            {1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1},
+            {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
     };
 
-    private List<Vector2int> solution;
+    public Vector2int pointDepart;
+    public Vector2int pointArrivee;
 
-    public TempMaze() {
-//Map.of(START, trStart, FINISH, trFinish, FLOOR, trFloor, WALL, trWall);
+    public List<Vector2int> pathFinding;
 
+    public Maze() {
+        //if JAVA 9 : = Map.of(START, trStart, FINISH, trFinish, FLOOR, trFloor, WALL, trWall);
         textureRegions.put(START, trStart);
         textureRegions.put(FINISH, trFinish);
         textureRegions.put(FLOOR, trFloor);
         textureRegions.put(WALL, trWall);
         textureRegions.put(PATH, trPath);
 
-        startPoint = new Vector2int(1, 1);
-        endPoint = new Vector2int(9, 7);
-
-        solution = new AStarTempMaze(this).FindPath(new Node(startPoint, null), new Node(endPoint, null));
+        //!!!!!!!!!!!!!!!!!!!!!!!
+        pointDepart = new Vector2int(5, 6);
+        pointArrivee = new Vector2int(8, 9);
     }
 
     public void render(SpriteBatch batch) {
-        // dessine le labyrinthe
+
+        // labyrinthe
         for (int y = array.length - 1; y >= 0; y--) {
             for (int x = array[y].length - 1; x >= 0; x--) {
                 batchDraw(batch, array[y][x], x, y);
             }
         }
+        batchDraw(batch, START, pointDepart.myX, pointDepart.myY);
+        batchDraw(batch, FINISH, pointArrivee.myX, pointArrivee.myY);
 
-        // dessine le départ et l'arrivée
-        batchDraw(batch, START, startPoint.myX, startPoint.myY);
-        batchDraw(batch, FINISH, endPoint.myX, endPoint.myY);
-
-        // dessine la solution, si pas null
-        if (solution != null) {
-            for (Vector2int v : solution) {
-                batchDraw(batch, PATH, v.myX, v.myY);
+        // solution
+        if (pathFinding != null) {
+            for (Vector2int p : pathFinding) {
+                batchDraw(batch, PATH, p.myX, p.myY);
             }
         }
 
@@ -96,5 +93,4 @@ public class TempMaze {
     private TextureRegion NumToTile(int i) {
         return textureRegions.get(i);
     }
-
 }
