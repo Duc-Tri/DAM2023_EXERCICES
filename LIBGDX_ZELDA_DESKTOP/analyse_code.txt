@@ -1,0 +1,218 @@
+PAR ORDRE DE TAILLE DE FICHIER
+==================================================
+----- BaseBounds.java [zelda\javafx]
+----- RectBounds.java [zelda\javafx]
+----- RectangularShape.java [zelda\javafx]
+----- Line2D.java [zelda\javafx]
+----- Rectangle.java [zelda\javafx]
+----- Shape.java [zelda\javafx]
+----- Arc2D.java [zelda\javafx]
+----- Math.java [zelda\util]
+----- Pair.java [zelda\util]
+==================================================
+StructureTree.java [zelda\structures]
+■ public StructureTree(String name, int id)
+- extends Structure 
+==================================================
+TileEntity.java [zelda\tiles\tileentities]==================================================
+InstanceEntityRock.java [zelda\entities\instances]
+■ public InstanceEntityRock(float x, float y)==================================================
+Musics.java [zelda\sound]
+■ public static void registerMusics()==================================================
+Items.java [zelda\items]
+■ public static void registerItems()
+- juste une épée ...
+==================================================
+Orientation.java [zelda\entities]
+■ public static Orientation randomOrientation()==================================================
+InstanceEntityMoblin.java [zelda\entities\instances]
+- extends InstanceEntityHostileMonster
+■ public InstanceEntityMoblin(float x, float y, EntityMoblin.MoblinType color)==================================================
+Structures.java [zelda\structures]
+■ public static void registerStructures()
+- juste une maison et un arbre
+■ public static Structure getStructure(int id)==================================================
+EntityRock.java [zelda\entities]
+■ public EntityRock(int id)
+■ public Rectangle getCollisionBounds(float posX, float posY)
+■ public InstanceEntity newInstance(float x, float y)
+==================================================
+DestructibleTile.java [zelda\tiles]
+- no usage==================================================
+StructureHouse.java [zelda\structures]
+- extends Structure
+■ public StructureHouse(String name, int id)
+■ public ArrayList<Rectangle> getCollisionRectangles(float x, float y)
+- 4 carrés de collisions pour une maison
+==================================================
+EntityMoblin.java [zelda\entities]
+■ public EntityMoblin(String textureName, String name, int id, int maxLife, float damage, float moveSpeed, MoblinType type)
+■ public InstanceEntity newInstance(float x, float y)
+==================================================
+InstanceStructure.java [zelda\structures]
+■ public InstanceStructure(Structure structure, float x, float y)
+■ public void draw(SpriteBatch batch)
+■ public int getStructureId()
+==================================================
+World.java [zelda\world]
+- contient map et héros
+■ public static Map getCurrentMap()
+■ public static void setCurrentMap(Map currentMap)
+■ public static void initHero()
+■ public static InstanceEntityHero getHero()==================================================
+Animations.java [zelda\animations]
+- seulement les monstres ???
+■ public static void registerAnimations()
+■ public static Animation createAnimation(String name, float frameTime, int regionWidth, int regionHeight, Animation.PlayMode mode)
+==================================================
+Sounds.java [zelda\sound]
+■ public static void registerSounds()
+==================================================
+Item.java [zelda\items]
+■ public Item(String textureName, String name, int id)
+■ public String getName()
+■ public void draw(SpriteBatch batch, float xPos, float yPos)
+==================================================
+Entities.java [zelda\entities]
+- entité monstre, rocher, héros
+■ public static void registerEntities()
+■ public static Entity getEntity(Integer id)
+==================================================
+Tile.java [zelda\tiles]
+- Un simpe Tile orthogonal qui pourra être stocké dans une map puis affiché à l'écran
+■ public Tile(String name, int id)
+■ public Texture getTexture()
+■ public void draw(SpriteBatch batch, float deltaTime, int xPos, int yPos)
+■ public int getId()
+■ public String getName() ==================================================
+ZeldaGDX.java [zelda]
+- initiation Animations, Entities, Tiles, Musics, Sounds, Items, Structures et render==================================================
+Entity.java [zelda\entities]
+■ public Entity(String textureName, String name, int id)
+■ public String getName()
+■ public void draw(SpriteBatch batch, float xPos, float yPos)
+■ public Rectangle getCollisionBounds(float posX, float posY)
+■ public int getId()
+■ public InstanceEntity newInstance(float x, float y)==================================================
+LivingEntity.java [zelda\entities]
+- Une entité vivante pouvant se déplacer, prendre des dégats et en infliger, avec les animations
+■ public LivingEntity(String textureName, String name, int id, int maxLife, float damage, float moveSpeed)
+■ public float getMoveSpeed()
+■ public float getDamage()
+■ public Rectangle getDamageBounds(float posX, float posY)
+■ public float getMaxLife()==================================================
+Tiles.java [zelda\tiles]
+- La liste des tiles enregistrés et initialisés au lancement du jeu
+- pas mal de variables non utilisées (maisons)
+■ public static void registerTiles()
+■ public static Tile getTile(int id)
+==================================================
+InstanceEntity.java [zelda\entities\instances]
+- Permet de créer une entité unique, ajoute les champs qui seront dépendant à chaque instance d'une entité donnée
+■ public InstanceEntity(Entity entity)
+■ public InstanceEntity(Entity entity, float x, float y)
+■ public void draw(SpriteBatch batch, float deltaTime)
+■ public float getXRelativeTo(InstanceEntity entity)
+■ public float getYRelativeTo(InstanceEntity entity)
+■ public int getXChunk()
+■ public int getYChunk()
+■ public Rectangle getCollisionBounds()
+■ public int getId()
+■ public InstanceEntity newInstance(float x, float y)==================================================
+AnimatedTile.java [zelda\tiles]
+- Tile animé, se baser sur le Tile 'fleurs' pour voir comment le contruire.
+- plusieurs méthodes non utilisées
+■ public AnimatedTile(String name, int id, float frameDuration, Animation.PlayMode playMode)
+■ public TextureRegion getKeyFrame(float time)
+■ public void draw(SpriteBatch batch, float time, int xPos, int yPos)
+==================================================
+GameScreen.java [zelda\screens]
+- plusieurs variables non utilisées
+■ public GameScreen(ZeldaGDX game)
+■ public void show()
+■ public void render(float delta)==================================================
+ItemSword.java [zelda\items]
+■ public ItemSword(String textureName, String name, int id, float slashTime, float allonge)
+■ protected void makeAnimations()
+■ public void playRandomSlashSound()==================================================
+EntityHostileMonster.java [zelda\entities]
+- extends LivingEntity
+■ public EntityHostileMonster(String textureName, String name, int id, int maxLife, float damage, float moveSpeed)
+■ protected void makeAnimations()
+■ public Rectangle getCollisionBounds(float posX, float posY)
+■ public Rectangle getDamageBounds(float posX, float posY)==================================================
+InstanceLivingEntity.java [zelda\entities\instances]
+- extends InstanceEntity
+- variables life, alive, ... qui auraient pu être dans LivingEntity ???
+■ public InstanceLivingEntity(LivingEntity entity)
+■ public void draw(SpriteBatch batch, float deltaTime)
+■ public void hurt(float damage, InstanceEntity hitter, Item source)
+■ public Rectangle getDamageBounds()
+■ public void push(InstanceEntity pusher, float distance, float time)
+==================================================
+Structure.java [zelda\structures] 
+- les tuiles du jeu et les collisions
+■ public Structure(String name, int id)
+■ public ArrayList<Rectangle> getCollisionRectangles(float x, float y)
+■ public void place(Map map, int chunkX, int chunkY, int x, int y)
+- no usage
+■ public void placeRandom(int chunkX, int chunkY)
+- mettre un objet à un emplacement
+■ public InstanceStructure newInstance(float x, float y)
+==================================================
+Save.java [zelda\save]
+■ public static void loadOrCreateSave()
+■ public static void saveChunk(Chunk chunk, boolean destroyEntities)
+■ public static FileHandle getChunkFile(int chunkX, int chunkY)==================================================
+Chunk.java [zelda\map]
+- Stocke un morceau de monde
+■ public Chunk(int x, int y)
+■ public void initRandomStructures()
+■ public void drawTiles(SpriteBatch batch, float deltaTime, int xChunk, int yChunk)
+■ public void drawStructures(SpriteBatch batch)
+■ public void placeMonstersRandom()
+■ public void placeEntityRandom(Entity entity)
+■ public Tile getTile(int x, int y)
+■ public void setTile(int x, int y, Tile tile)==================================================
+EntityHero.java [zelda\entities]
+- extends LivingEntity, entité qui va pouvoir être controllée par le joueur
+- variables anim... qui auraient pu être dans LivingEntity 
+■ public EntityHero(String textureName, String name, int id, int maxLife, int damage, float moveSpeed)
+■ protected void makeAnimations()
+■ public Rectangle getCollisionBounds(float posX, float posY)==================================================
+InstanceEntityHostileMonster.java [zelda\entities\instances]
+■ public InstanceEntityHostileMonster(float x, float y)
+■ public void updateDeath()
+■ public void hurt(float damage, InstanceEntity hitter, Item source)
+■ private void handlePush()
+■ private void updateMovePassif()
+■ public void updateAnimation(Orientation orientation)
+■ private void updateMoveAgressif()
+■ public boolean handleCollisions(float oldX, float oldY, float newX, float newY)
+■ public boolean handleCollisionWithEntity(InstanceEntity entity, float oldX, float oldY, float newX, float newY)
+■ public boolean handleCollisionWithRectangle(Rectangle rectangle, float oldX, float oldY, float newX, float newY)==================================================
+Map.java [zelda\map]
+- carte affichée par GameScreen, stocke la portion du monde actuelle
+- code fortement refactorisable
+■ public Map()
+■ public void initMap()
+■ public synchronized void updateChunksArray()
+■ public void loadChunks(Orientation direction)
+■ public void loadChunkFile(Chunk chunk, FileHandle file)==================================================
+InstanceEntityHero.java [zelda\entities\instances]
+- extends InstanceLivingEntity implements InputProcessor
+■ public InstanceEntityHero()
+■ public void update()
+■ public InstanceEntity handleSwordRectangleHit()
+■ public void handleSwordArcHit()
+■ public void handleSwordAnimation()
+■ public void stopMove()
+■ public void handleMoveInputs()
+■ public void updateAnimation(Orientation orientation, boolean isPushing)
+■ public void updatePushingAnimation()
+■ public void updatePushingDamagedAnimation()
+■ public void updateMoveAnimation()
+■ public void updateMoveDamagedAnimation()
+■ public int numberOfArrowKeysPressed()
+■ public void hurt(float damage, InstanceEntity hitter, Item source)
+==================================================

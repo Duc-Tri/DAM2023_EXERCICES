@@ -36,8 +36,6 @@ package com.dam2023.zelda.javafx;
  * unclosed shapes to be implicitly closed for the purpose of
  * determining if a shape contains or intersects a rectangle or if a
  * shape contains a point.
- *
- *
  */
 public abstract class Shape {
     /**
@@ -45,6 +43,7 @@ public abstract class Shape {
      * {@link RectBounds} is the smallest bounding box that encloses
      * the <code>Shape</code>, only that the <code>Shape</code> lies
      * entirely within the indicated <code>RectBounds</code>.
+     *
      * @return an instance of <code>RectBounds</code>
      */
     public abstract RectBounds getBounds();
@@ -52,11 +51,12 @@ public abstract class Shape {
     /**
      * Tests if the specified coordinates are inside the boundary of the
      * <code>Shape</code>.
+     *
      * @param x the specified X coordinate to be tested
      * @param y the specified Y coordinate to be tested
      * @return <code>true</code> if the specified coordinates are inside
-     *         the <code>Shape</code> boundary; <code>false</code>
-     *         otherwise.
+     * the <code>Shape</code> boundary; <code>false</code>
+     * otherwise.
      */
     public abstract boolean contains(float x, float y);
 
@@ -91,9 +91,9 @@ public abstract class Shape {
      * @param w the width of the specified rectangular area
      * @param h the height of the specified rectangular area
      * @return <code>true</code> if the interior of the <code>Shape</code> and
-     *      the interior of the rectangular area intersect, or are
-     *      both highly likely to intersect and intersection calculations
-     *      would be too expensive to perform; <code>false</code> otherwise.
+     * the interior of the rectangular area intersect, or are
+     * both highly likely to intersect and intersection calculations
+     * would be too expensive to perform; <code>false</code> otherwise.
      */
     public abstract boolean intersects(float x, float y, float w, float h);
 
@@ -120,13 +120,14 @@ public abstract class Shape {
      * more accurate computations of geometric intersection than most
      * {@code Shape} objects and therefore can be used if a more precise
      * answer is required.
+     * <p>
+     *          of the specified rectangular area
+     *          of the specified rectangular area
      *
-     *          of the specified rectangular area
-     *          of the specified rectangular area
      * @return <code>true</code> if the interior of the <code>Shape</code> and
-     *      the interior of the rectangular area intersect, or are
-     *      both highly likely to intersect and intersection calculations
-     *      would be too expensive to perform; <code>false</code> otherwise.
+     * the interior of the rectangular area intersect, or are
+     * both highly likely to intersect and intersection calculations
+     * would be too expensive to perform; <code>false</code> otherwise.
      */
     public boolean intersects(RectBounds r) {
         float x = r.getMinX();
@@ -141,8 +142,7 @@ public abstract class Shape {
      * rectangle denoted by rx1, ry1, rx2, ry2.
      */
     static boolean intersectsLine(float rx1, float ry1, float rwidth,
-                                  float rheight, float x1, float y1, float x2, float y2)
-    {
+                                  float rheight, float x1, float y1, float x2, float y2) {
         int out1, out2;
         if ((out2 = outcode(rx1, ry1, rwidth, rheight, x2, y2)) == 0) {
             return true;

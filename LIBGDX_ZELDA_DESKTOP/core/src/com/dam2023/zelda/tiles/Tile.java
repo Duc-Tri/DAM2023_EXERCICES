@@ -7,8 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 /**
  * Un simpe Tile orthogonal qui pourra être stocké dans une map puis affiché à l'écran
  */
-public class Tile
-{
+public class Tile {
     // Le chemin qui mène aux tiles dans les assets
     protected static final String PATH = "tiles/";
     // La taille du côté d'un tile
@@ -21,31 +20,26 @@ public class Tile
     // La texture chargée
     protected final Texture texture;
 
-    public Tile(String name, int id)
-    {
+    public Tile(String name, int id) {
         this.name = name;
         this.id = id;
         this.texture = new Texture(Gdx.files.internal(PATH + this.name + ".png"));
     }
 
     // Retourne la texture
-    public Texture getTexture()
-    {
+    public Texture getTexture() {
         return texture;
     }
 
-    public void draw(SpriteBatch batch, float deltaTime, int xPos, int yPos)
-    {
+    public void draw(SpriteBatch batch, float deltaTime, int xPos, int yPos) {
         batch.draw(getTexture(), xPos, yPos);
     }
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 }

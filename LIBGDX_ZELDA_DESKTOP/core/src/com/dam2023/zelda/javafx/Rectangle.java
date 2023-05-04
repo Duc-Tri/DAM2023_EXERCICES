@@ -129,8 +129,9 @@ public class Rectangle {
      * float values, the Rectangle will be created such that the bounding rectangle
      * of the specified BaseBounds would always lie within the bounding box
      * specified by this Rectangle.
-     * @param r  the <code>BaseBounds</code> from which to copy initial values
-     *           to a newly constructed <code>Rectangle</code>
+     *
+     * @param r the <code>BaseBounds</code> from which to copy initial values
+     *          to a newly constructed <code>Rectangle</code>
      */
     public Rectangle(Rectangle r) {
         this(r.x, r.y, r.width, r.height);
@@ -141,10 +142,11 @@ public class Rectangle {
      * specified as
      * {@code (x,y)} and whose width and height
      * are specified by the arguments of the same name.
-     * @param     x the specified X coordinate
-     * @param     y the specified Y coordinate
-     * @param     width    the width of the <code>Rectangle</code>
-     * @param     height   the height of the <code>Rectangle</code>
+     *
+     * @param x      the specified X coordinate
+     * @param y      the specified Y coordinate
+     * @param width  the width of the <code>Rectangle</code>
+     * @param height the height of the <code>Rectangle</code>
      */
     public Rectangle(int x, int y, int width, int height) {
         this.x = x;
@@ -157,7 +159,8 @@ public class Rectangle {
      * Constructs a new <code>Rectangle</code> whose upper-left corner
      * is at (0,&nbsp;0) in the coordinate space, and whose width and
      * height are specified by the arguments of the same name.
-     * @param width the width of the <code>Rectangle</code>
+     *
+     * @param width  the width of the <code>Rectangle</code>
      * @param height the height of the <code>Rectangle</code>
      */
     public Rectangle(int width, int height) {
@@ -181,15 +184,16 @@ public class Rectangle {
      * <code>null</code> and is a <code>Rectangle</code> object that has the
      * same upper-left corner, width, and height as
      * this <code>Rectangle</code>.
+     *
      * @param obj the <code>Object</code> to compare with
-     *                this <code>Rectangle</code>
-     * @return    <code>true</code> if the objects are equal;
-     *            <code>false</code> otherwise.
+     *            this <code>Rectangle</code>
+     * @return <code>true</code> if the objects are equal;
+     * <code>false</code> otherwise.
      */
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Rectangle) {
-            Rectangle r = (Rectangle)obj;
+            Rectangle r = (Rectangle) obj;
             return ((x == r.x) &&
                     (y == r.y) &&
                     (width == r.width) &&
@@ -210,8 +214,9 @@ public class Rectangle {
     /**
      * Returns a <code>String</code> representing this
      * <code>Rectangle</code> and its values.
+     *
      * @return a <code>String</code> representing this
-     *               <code>Rectangle</code> object's coordinate and size values.
+     * <code>Rectangle</code> object's coordinate and size values.
      */
     @Override
     public String toString() {

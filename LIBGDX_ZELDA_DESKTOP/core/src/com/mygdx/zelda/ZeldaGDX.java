@@ -16,11 +16,9 @@ import com.dam2023.zelda.world.World;
 /**
  * La classe principale du jeu
  */
-public class ZeldaGDX extends Game
-{
+public class ZeldaGDX extends Game {
     @Override
-    public void create()
-    {
+    public void create() {
         // Phase d'initialisation des assets
         Animations.registerAnimations();
         Entities.registerEntities();
@@ -44,20 +42,17 @@ public class ZeldaGDX extends Game
     }
 
     @Override
-    public void render()
-    {
+    public void render() {
         super.render();
     }
 
     @Override
-    public void resize(int width, int height)
-    {
+    public void resize(int width, int height) {
 
     }
 
     @Override
-    public void dispose()
-    {
+    public void dispose() {
 
     }
 

@@ -9,23 +9,20 @@ import com.dam2023.zelda.tiles.Tile;
 /**
  * Created by Aurelien on 23/12/2015.
  */
-public class EntityHostileMonster extends LivingEntity
-{
+public class EntityHostileMonster extends LivingEntity {
     public static final int regionHeight = 16;
     public static final int regionWidth = 16;
 
     public Animation deathAnimation;
 
-    public EntityHostileMonster(String textureName, String name, int id, int maxLife, float damage, float moveSpeed)
-    {
+    public EntityHostileMonster(String textureName, String name, int id, int maxLife, float damage, float moveSpeed) {
         super(textureName, name, id, maxLife, damage, moveSpeed);
         this.textureFrames = TextureRegion.split(texture, regionWidth, regionHeight);
 
         makeAnimations();
     }
 
-    protected void makeAnimations()
-    {
+    protected void makeAnimations() {
         // MOVE
         this.animMoveBottom = new Animation(0.1f, this.textureFrames[0][0], this.textureFrames[0][1]);
         this.animMoveBottom.setPlayMode(Animation.PlayMode.LOOP);
@@ -57,16 +54,14 @@ public class EntityHostileMonster extends LivingEntity
     }
 
     @Override
-    public Rectangle getCollisionBounds(float posX, float posY)
-    {
+    public Rectangle getCollisionBounds(float posX, float posY) {
         return new Rectangle(posX * Tile.TILE_SIZE + 3, posY * Tile.TILE_SIZE + 3, 11, 11);
     }
 
     /**
      * Définit la hitbox du monstre
      */
-    public Rectangle getDamageBounds(float posX, float posY)
-    {
+    public Rectangle getDamageBounds(float posX, float posY) {
         return new Rectangle(posX * Tile.TILE_SIZE + 1, posY * Tile.TILE_SIZE + 1, 14, 14);
     }
 }

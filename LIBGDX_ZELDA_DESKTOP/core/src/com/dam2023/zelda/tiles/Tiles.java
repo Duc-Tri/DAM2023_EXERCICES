@@ -7,8 +7,7 @@ import java.util.HashMap;
 /**
  * La liste des tiles enregistrés et initialisés au lancement du jeu
  */
-public class Tiles
-{
+public class Tiles {
     private static int currentId = 0;
 
     public static Tile herbe;
@@ -20,20 +19,9 @@ public class Tiles
     public static Tile graviers;
     public static Tile fleurs;
 
-    //  Maison
-    public static Tile maisonFenetre;
-    public static Tile maisonPorte;
-    public static Tile toitBleuInfDroit;
-    public static Tile toitBleuInfMid;
-    public static Tile toitBleuInfGauche;
-    public static Tile toitBleuSupDroit;
-    public static Tile toitBleuSupMid;
-    public static Tile toitBleuSupGauche;
-
     private static final HashMap<Integer, Tile> tiles = new HashMap<>();
 
-    public static void registerTiles()
-    {
+    public static void registerTiles() {
         herbe = new Tile("herbe", currentId++);
         hautes_herbes = new Tile("hautes_herbes", currentId++);
         terre = new Tile("terre", currentId++);
@@ -53,8 +41,7 @@ public class Tiles
         tiles.put(fleurs.getId(), fleurs);
     }
 
-    public static Tile getTile(int id)
-    {
+    public static Tile getTile(int id) {
         return tiles.get(id);
     }
 }

@@ -31,19 +31,23 @@ public final class RectBounds extends BaseBounds {
         setBounds(minX, minY, maxX, maxY);
     }
 
-    @Override public float getMinX() {
+    @Override
+    public float getMinX() {
         return minX;
     }
 
-    @Override public float getMinY() {
+    @Override
+    public float getMinY() {
         return minY;
     }
 
-    @Override public float getMaxX() {
+    @Override
+    public float getMaxX() {
         return maxX;
     }
 
-    @Override public float getMaxY() {
+    @Override
+    public float getMaxY() {
         return maxY;
     }
 
@@ -67,7 +71,8 @@ public final class RectBounds extends BaseBounds {
         sortMinMax();
     }
 
-    @Override protected void sortMinMax() {
+    @Override
+    protected void sortMinMax() {
         if (minX > maxX) {
             float tmp = maxX;
             maxX = minX;
@@ -80,7 +85,8 @@ public final class RectBounds extends BaseBounds {
         }
     }
 
-    @Override public boolean equals(Object obj) {
+    @Override
+    public boolean equals(Object obj) {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
 
@@ -91,7 +97,8 @@ public final class RectBounds extends BaseBounds {
         return maxY == other.getMaxY();
     }
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
         int hash = 7;
         hash = 79 * hash + Float.floatToIntBits(minX);
         hash = 79 * hash + Float.floatToIntBits(minY);
@@ -100,7 +107,8 @@ public final class RectBounds extends BaseBounds {
         return hash;
     }
 
-    @Override public String toString() {
-        return "RectBounds { minX:" + minX + ", minY:" + minY + ", maxX:" + maxX + ", maxY:" + maxY + "} (w:" + (maxX-minX) + ", h:" + (maxY-minY) +")";
+    @Override
+    public String toString() {
+        return "RectBounds { minX:" + minX + ", minY:" + minY + ", maxX:" + maxX + ", maxY:" + maxY + "} (w:" + (maxX - minX) + ", h:" + (maxY - minY) + ")";
     }
 }

@@ -1,11 +1,12 @@
 package com.dam2023.zelda.util;
 
+import java.util.Objects;
+
 /**
  * Une structure de données permettant de stocker une paire de valeurs
  * Cette classe est copiée sur la classe Pair de JavaFX
  */
-public class Pair<K, V>
-{
+public class Pair<K, V> {
     /**
      * Key of this <code>Pair</code>.
      */
@@ -16,8 +17,7 @@ public class Pair<K, V>
      *
      * @return key for this pair
      */
-    public K getKey()
-    {
+    public K getKey() {
         return key;
     }
 
@@ -31,8 +31,7 @@ public class Pair<K, V>
      *
      * @return value for this pair
      */
-    public V getValue()
-    {
+    public V getValue() {
         return value;
     }
 
@@ -42,8 +41,7 @@ public class Pair<K, V>
      * @param key   The key for this pair
      * @param value The value to use for this pair
      */
-    public Pair(K key, V value)
-    {
+    public Pair(K key, V value) {
         this.key = key;
         this.value = value;
     }
@@ -57,8 +55,7 @@ public class Pair<K, V>
      * @return <code>String</code> representation of this <code>Pair</code>
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return key + "=" + value;
     }
 
@@ -71,8 +68,7 @@ public class Pair<K, V>
      * @return hash code for this <code>Pair</code>
      */
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         // name's hashCode is multiplied by an arbitrary prime number (13)
         // in order to make sure there is a difference in the hashCode between
         // these two parameters:
@@ -98,14 +94,12 @@ public class Pair<K, V>
      * equal to this <code>Pair</code> else <code>false</code>
      */
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (this == o) return true;
-        if (o instanceof Pair)
-        {
+        if (o instanceof Pair) {
             Pair pair = (Pair) o;
-            if (key != null ? !key.equals(pair.key) : pair.key != null) return false;
-            return value != null ? value.equals(pair.value) : pair.value == null;
+            if (!Objects.equals(key, pair.key)) return false;
+            return Objects.equals(value, pair.value);
         }
         return false;
     }

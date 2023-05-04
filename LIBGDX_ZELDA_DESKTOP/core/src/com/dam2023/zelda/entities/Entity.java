@@ -9,8 +9,7 @@ import com.dam2023.zelda.entities.instances.InstanceEntity;
 /**
  * Created by Aurelien on 17/12/2015.
  */
-public class Entity
-{
+public class Entity {
     // Identifiant
     protected final int id;
 
@@ -23,44 +22,33 @@ public class Entity
     // La texture chargée
     protected final Texture texture;
 
-    public Entity(String textureName, String name, int id)
-    {
+    public Entity(String textureName, String name, int id) {
         this.id = id;
         this.textureName = textureName;
         this.name = name;
         this.texture = new Texture(Gdx.files.internal(PATH + this.textureName + ".png"));
     }
 
-    public String getTextureName()
-    {
-        return textureName;
-    }
-
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
     /**
      * Dessine l'entity à la position donnée en Pixels
      */
-    public void draw(SpriteBatch batch, float xPos, float yPos)
-    {
+    public void draw(SpriteBatch batch, float xPos, float yPos) {
         batch.draw(texture, xPos, yPos);
     }
 
-    public Rectangle getCollisionBounds(float posX, float posY)
-    {
-        return new Rectangle(0,0,0,0);
+    public Rectangle getCollisionBounds(float posX, float posY) {
+        return new Rectangle(0, 0, 0, 0);
     }
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public InstanceEntity newInstance(float x, float y)
-    {
-        return new InstanceEntity(this, x,y);
+    public InstanceEntity newInstance(float x, float y) {
+        return new InstanceEntity(this, x, y);
     }
 }

@@ -8,8 +8,7 @@ import java.util.Random;
 /**
  * Le monde, contenant des champs statiques map et héros
  */
-public class World
-{
+public class World {
     // La map à laquelle se trouve le héros
     private static Map currentMap;
     // Le Heros à afficher
@@ -17,23 +16,19 @@ public class World
     // Le variable servant à la génération d'évenements Randoms
     public static final Random random = new Random();
 
-    public static Map getCurrentMap()
-    {
+    public static Map getCurrentMap() {
         return currentMap;
     }
 
-    public static void setCurrentMap(Map currentMap)
-    {
+    public static void setCurrentMap(Map currentMap) {
         World.currentMap = currentMap;
     }
 
-    public static void initHero()
-    {
+    public static void initHero() {
         World.hero = new InstanceEntityHero();
     }
 
-    public static InstanceEntityHero getHero()
-    {
+    public static InstanceEntityHero getHero() {
         return hero;
     }
 }

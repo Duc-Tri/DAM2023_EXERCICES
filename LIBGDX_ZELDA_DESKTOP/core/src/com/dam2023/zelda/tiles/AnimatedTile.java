@@ -12,14 +12,6 @@ public class AnimatedTile extends Tile {
     protected final TextureRegion[] frames;
     protected final Animation animation;
 
-    public AnimatedTile(String name, int id) {
-        super(name, id);
-        TextureRegion[][] tmp = TextureRegion.split(texture, TILE_SIZE, TILE_SIZE);
-        frames = new TextureRegion[tmp[0].length];
-        System.arraycopy(tmp[0], 0, frames, 0, tmp[0].length);
-        animation = new Animation(0.5f, frames);
-    }
-
     /**
      * @param name          Le nom du fichier de texture
      * @param frameDuration La durée entre deux frames de l'animation en seconde
@@ -33,18 +25,6 @@ public class AnimatedTile extends Tile {
         animation = new Animation(0.5f, frames);
         animation.setPlayMode(playMode);
         animation.setFrameDuration(frameDuration);
-    }
-
-    // Définit le mode d'animation
-    public AnimatedTile setAnimationMode(Animation.PlayMode playMode) {
-        this.animation.setPlayMode(playMode);
-        return this;
-    }
-
-    // Définit la durée entre deux frames
-    public AnimatedTile setFrameDuration(float frameDuration) {
-        this.animation.setFrameDuration(frameDuration);
-        return this;
     }
 
     public TextureRegion getKeyFrame(float time) {

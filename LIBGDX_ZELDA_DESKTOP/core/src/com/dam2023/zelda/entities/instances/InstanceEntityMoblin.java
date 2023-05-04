@@ -6,13 +6,10 @@ import com.dam2023.zelda.entities.EntityMoblin;
 /**
  * Created by Aurelien on 16/01/2016.
  */
-public class InstanceEntityMoblin extends InstanceEntityHostileMonster
-{
-    public InstanceEntityMoblin(float x, float y, EntityMoblin.MoblinType color)
-    {
-        super(x,y);
-        switch (color)
-        {
+public class InstanceEntityMoblin extends InstanceEntityHostileMonster {
+    public InstanceEntityMoblin(float x, float y, EntityMoblin.MoblinType color) {
+        super(x, y);
+        switch (color) {
             case RED:
                 entity = Entities.redMoblin;
                 break;

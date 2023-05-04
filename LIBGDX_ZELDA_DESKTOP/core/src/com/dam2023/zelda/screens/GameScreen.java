@@ -11,31 +11,24 @@ import com.dam2023.zelda.map.Map;
 import com.dam2023.zelda.sound.Musics;
 import com.dam2023.zelda.tiles.Tile;
 import com.dam2023.zelda.world.World;
-import com.mygdx.zelda.ZeldaGDX;
 
 /**
  * L'écran de jeu. Il peut gérer les inputs qui lui sont propres à condition de le definir en tant
  * qu'InputProcessor de Gdx.input
  */
-public class GameScreen implements Screen
-{
+public class GameScreen implements Screen {
     private final ZeldaGDX game;
     private final SpriteBatch batch;
     private final OrthographicCamera camera;
     private float time;
 
-    public static float TIME_STEP = 1/60f;
-    public static int VELOCITY_ITERATIONS = 6;
-    public static int POSITION_ITERATIONS = 2;
-
-    public GameScreen(ZeldaGDX game)
-    {
+    public GameScreen(ZeldaGDX game) {
         this.game = game;
         this.batch = new SpriteBatch();
         this.time = 0;
 
-        float w = 864;
-        float h = 480;
+        float w = 800;
+        float h = 600;
         this.camera = new OrthographicCamera(w, h);
         float tw = Tile.TILE_SIZE * Chunk.CHUNK_TILE_SIZE * Map.MAP_CHUNK_SIZE;
 
@@ -47,15 +40,13 @@ public class GameScreen implements Screen
     }
 
     @Override
-    public void show()
-    {
+    public void show() {
         Musics.exterieur.setLooping(true);
         Musics.exterieur.play();
     }
 
     @Override
-    public void render(float delta)
-    {
+    public void render(float delta) {
         // Déplacer le héros
         World.getHero().update();
         // Positionner la caméra sur le héros
@@ -73,36 +64,24 @@ public class GameScreen implements Screen
         batch.end();
     }
 
-    private final float accumulator = 0;
-
     @Override
-    public void resize(int width, int height)
-    {
-
+    public void resize(int width, int height) {
     }
 
     @Override
-    public void pause()
-    {
-
+    public void pause() {
     }
 
     @Override
-    public void resume()
-    {
-
+    public void resume() {
     }
 
     @Override
-    public void hide()
-    {
-
+    public void hide() {
     }
 
     @Override
-    public void dispose()
-    {
-
+    public void dispose() {
     }
 
 }

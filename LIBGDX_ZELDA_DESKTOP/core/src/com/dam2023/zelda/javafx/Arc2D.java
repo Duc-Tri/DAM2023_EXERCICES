@@ -36,6 +36,7 @@ public class Arc2D extends RectangularShape {
     /**
      * The X coordinate of the upper-left corner of the framing
      * rectangle of the arc.
+     *
      * @serial
      */
     public float x;
@@ -43,6 +44,7 @@ public class Arc2D extends RectangularShape {
     /**
      * The Y coordinate of the upper-left corner of the framing
      * rectangle of the arc.
+     *
      * @serial
      */
     public float y;
@@ -51,6 +53,7 @@ public class Arc2D extends RectangularShape {
      * The overall width of the full ellipse of which this arc is
      * a partial section (not considering the
      * angular extents).
+     *
      * @serial
      */
     public float width;
@@ -59,18 +62,21 @@ public class Arc2D extends RectangularShape {
      * The overall height of the full ellipse of which this arc is
      * a partial section (not considering the
      * angular extents).
+     *
      * @serial
      */
     public float height;
 
     /**
      * The starting angle of the arc in degrees.
+     *
      * @serial
      */
     public float start;
 
     /**
      * The angular extent of the arc in degrees.
+     *
      * @serial
      */
     public float extent;
@@ -90,17 +96,17 @@ public class Arc2D extends RectangularShape {
      * Constructs a new arc, initialized to the specified location,
      * size, angular extents, and closure type.
      *
-     * @param x The X coordinate of the upper-left corner of
-     *          the arc's framing rectangle.
-     * @param y The Y coordinate of the upper-left corner of
-     *          the arc's framing rectangle.
-     * @param w The overall width of the full ellipse of which
-     *          this arc is a partial section.
-     * @param h The overall height of the full ellipse of which this
-     *          arc is a partial section.
-     * @param start The starting angle of the arc in degrees.
+     * @param x      The X coordinate of the upper-left corner of
+     *               the arc's framing rectangle.
+     * @param y      The Y coordinate of the upper-left corner of
+     *               the arc's framing rectangle.
+     * @param w      The overall width of the full ellipse of which
+     *               this arc is a partial section.
+     * @param h      The overall height of the full ellipse of which this
+     *               arc is a partial section.
+     * @param start  The starting angle of the arc in degrees.
      * @param extent The angular extent of the arc in degrees.
-     * @param type The closure type for the arc:
+     * @param type   The closure type for the arc:
      */
     public Arc2D(float x, float y, float w, float h,
                  float start, float extent, int type) {
@@ -155,6 +161,7 @@ public class Arc2D extends RectangularShape {
 
     /**
      * Returns the arc closure type of the arc: {@link #OPEN},
+     *
      * @return One of the integer constant closure types defined
      * in this class.
      * @see #setArcType
@@ -169,15 +176,14 @@ public class Arc2D extends RectangularShape {
      * <CODE>OPEN</CODE>, <CODE>CHORD</CODE>, or <CODE>PIE</CODE>.
      *
      * @param type The integer constant that represents the closure
-     * {@link #PIE}.
-     *
+     *             {@link #PIE}.
      * @throws IllegalArgumentException if <code>type</code> is not
-     * 0, 1, or 2.+
+     *                                  0, 1, or 2.+
      * @see #getArcType
      */
     public void setArcType(int type) {
         if (type < OPEN || type > PIE) {
-            throw new IllegalArgumentException("invalid type for Arc: "+type);
+            throw new IllegalArgumentException("invalid type for Arc: " + type);
         }
         this.type = type;
     }
@@ -214,7 +220,7 @@ public class Arc2D extends RectangularShape {
             if (i < 4) {
                 // 0-3 are the four quadrants
                 angle += 90.0;
-                if (!containsAngle((float)angle)) {
+                if (!containsAngle((float) angle)) {
                     continue;
                 }
             } else if (i == 4) {
@@ -238,7 +244,7 @@ public class Arc2D extends RectangularShape {
         y2 = this.y + (y2 * 0.5 + 0.5) * h;
         x1 = this.x + (x1 * 0.5 + 0.5) * w;
         y1 = this.y + (y1 * 0.5 + 0.5) * h;
-        return new RectBounds((float)x1, (float)y1, (float)x2, (float)y2);
+        return new RectBounds((float) x1, (float) y1, (float) x2, (float) y2);
     }
 
     /*
@@ -266,7 +272,7 @@ public class Arc2D extends RectangularShape {
                 }
             }
         }
-        return (float)angle;
+        return (float) angle;
     }
 
     /**
@@ -274,7 +280,6 @@ public class Arc2D extends RectangularShape {
      * angular extents of the arc.
      *
      * @param angle The angle to test.
-     *
      * @return <CODE>true</CODE> if the arc contains the angle,
      * <CODE>false</CODE> if the arc doesn't contain the angle.
      */
@@ -304,7 +309,6 @@ public class Arc2D extends RectangularShape {
      *
      * @param x The X coordinate of the point to test.
      * @param y The Y coordinate of the point to test.
-     *
      * @return <CODE>true</CODE> if the point lies within the bound of
      * the arc, <CODE>false</CODE> if the point lies outside of the
      * arc's bounds.
@@ -331,7 +335,7 @@ public class Arc2D extends RectangularShape {
         if (angExt >= 360.0) {
             return true;
         }
-        boolean inarc = containsAngle((float)-Math.toDegrees(Math.atan2(normy,
+        boolean inarc = containsAngle((float) -Math.toDegrees(Math.atan2(normy,
                 normx)));
         if (type == PIE) {
             return inarc;
@@ -356,8 +360,8 @@ public class Arc2D extends RectangularShape {
         angle += Math.toRadians(-extent);
         double x2 = Math.cos(angle);
         double y2 = Math.sin(angle);
-        boolean inside = (Line2D.relativeCCW((float)x1, (float)y1, (float)x2, (float)y2, (float)(2*normx), (float)(2*normy)) *
-                Line2D.relativeCCW((float)x1, (float)y1, (float)x2, (float)y2, 0, 0) >= 0);
+        boolean inside = (Line2D.relativeCCW((float) x1, (float) y1, (float) x2, (float) y2, (float) (2 * normx), (float) (2 * normy)) *
+                Line2D.relativeCCW((float) x1, (float) y1, (float) x2, (float) y2, 0, 0) >= 0);
         return inarc != inside;
     }
 
@@ -369,7 +373,6 @@ public class Arc2D extends RectangularShape {
      * @param y The Y coordinate of the rectangle's upper-left corner.
      * @param w The width of the rectangle.
      * @param h The height of the rectangle.
-     *
      * @return <CODE>true</CODE> if the arc intersects the rectangle,
      * <CODE>false</CODE> if the arc doesn't intersect the rectangle.
      */
@@ -378,7 +381,7 @@ public class Arc2D extends RectangularShape {
         float aw = this.width;
         float ah = this.height;
 
-        if ( w <= 0 || h <= 0 || aw <= 0 || ah <= 0 ) {
+        if (w <= 0 || h <= 0 || aw <= 0 || ah <= 0) {
             return false;
         }
         float ext = extent;
@@ -386,12 +389,12 @@ public class Arc2D extends RectangularShape {
             return false;
         }
 
-        float ax  = this.x;
-        float ay  = this.y;
+        float ax = this.x;
+        float ay = this.y;
         float axw = ax + aw;
         float ayh = ay + ah;
-        float xw  = x + w;
-        float yh  = y + h;
+        float xw = x + w;
+        float yh = y + h;
 
         // check bbox
         if (x >= axw || y >= ayh || xw <= ax || yh <= ay) {
@@ -443,8 +446,7 @@ public class Arc2D extends RectangularShape {
         if (type == PIE || Math.abs(ext) > 180) {
             // for PIE: try to find intersections with pie slices
             if (Shape.intersectsLine(x, y, w, h, axc, ayc, sx, sy) ||
-                    Shape.intersectsLine(x, y, w, h, axc, ayc, ex, ey))
-            {
+                    Shape.intersectsLine(x, y, w, h, axc, ayc, ex, ey)) {
                 return true;
             }
         } else {
@@ -461,6 +463,7 @@ public class Arc2D extends RectangularShape {
 
     /**
      * Returns the hashcode for this <code>Arc2D</code>.
+     *
      * @return the hashcode for this <code>Arc2D</code>.
      */
     @Override
@@ -482,15 +485,16 @@ public class Arc2D extends RectangularShape {
      * if it is an instance of <code>Arc2D</code> and if its
      * location, size, arc extents and type are the same as this
      * <code>Arc2D</code>.
-     * @param obj  an <code>Object</code> to be compared with this
-     *             <code>Arc2D</code>.
-     * @return  <code>true</code> if <code>obj</code> is an instance
-     *          of <code>Arc2D</code> and has the same values;
-     *          <code>false</code> otherwise.
+     *
+     * @param obj an <code>Object</code> to be compared with this
+     *            <code>Arc2D</code>.
+     * @return <code>true</code> if <code>obj</code> is an instance
+     * of <code>Arc2D</code> and has the same values;
+     * <code>false</code> otherwise.
      */
     @Override
     public boolean equals(Object obj) {
-        if (obj == this)  return true;
+        if (obj == this) return true;
         if (obj instanceof Arc2D) {
             Arc2D a2d = (Arc2D) obj;
             return ((x == a2d.x) &&

@@ -13,7 +13,8 @@ package com.dam2023.zelda.javafx;
 public abstract class BaseBounds {
 
     // Only allow subclasses in this package
-    BaseBounds() { }
+    BaseBounds() {
+    }
 
     public abstract float getMinX();
 

@@ -8,8 +8,7 @@ import com.dam2023.zelda.tiles.Tile;
 /**
  * L'entité qui va pouvoir être controllée par le joueur
  */
-public class EntityHero extends LivingEntity
-{
+public class EntityHero extends LivingEntity {
     private static final int regionHeight = 16;
     private static final int regionWidth = 16;
 
@@ -31,16 +30,14 @@ public class EntityHero extends LivingEntity
     public Animation animSwipeSwordLeft;
     public Animation animSwipeSwordRight;
 
-    public EntityHero(String textureName, String name, int id, int maxLife, int damage, float moveSpeed)
-    {
+    public EntityHero(String textureName, String name, int id, int maxLife, int damage, float moveSpeed) {
         super(textureName, name, id, maxLife, damage, moveSpeed);
         this.textureFrames = TextureRegion.split(texture, regionWidth, regionHeight);
 
         makeAnimations();
     }
 
-    protected void makeAnimations()
-    {
+    protected void makeAnimations() {
         // MOVE
         this.animMoveBottom = new Animation(0.1f, this.textureFrames[0][0], this.textureFrames[0][1]);
         this.animMoveBottom.setPlayMode(Animation.PlayMode.LOOP);
@@ -112,8 +109,7 @@ public class EntityHero extends LivingEntity
     }
 
     @Override
-    public Rectangle getCollisionBounds(float posX, float posY)
-    {
+    public Rectangle getCollisionBounds(float posX, float posY) {
         return new Rectangle(posX * Tile.TILE_SIZE + 5, posY * Tile.TILE_SIZE + 1, 7, 9);
     }
 }

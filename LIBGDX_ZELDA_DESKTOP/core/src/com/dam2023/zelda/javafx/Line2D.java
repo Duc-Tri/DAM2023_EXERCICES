@@ -10,7 +10,7 @@ package com.dam2023.zelda.javafx;
  * <a href="http://java.sun.com/j2se/1.3/docs/guide/2d/spec/j2d-intro.fm2.html#61857">
  * Coordinate Systems</a> section of the Java 2D Programmer's Guide.
  *
- * @version     1.37, 05/05/07
+ * @version 1.37, 05/05/07
  */
 public class Line2D extends Shape {
     /**
@@ -35,6 +35,7 @@ public class Line2D extends Shape {
 
     /**
      * Constructs and initializes a Line from the specified coordinates.
+     *
      * @param x1 the X coordinate of the start point
      * @param y1 the Y coordinate of the start point
      * @param x2 the X coordinate of the end point
@@ -47,6 +48,7 @@ public class Line2D extends Shape {
     /**
      * Sets the location of the end points of this <code>Line2D</code>
      * to the specified float coordinates.
+     *
      * @param x1 the X coordinate of the start point
      * @param y1 the Y coordinate of the start point
      * @param x2 the X coordinate of the end point
@@ -73,7 +75,9 @@ public class Line2D extends Shape {
      * @inheritDoc
      */
     @Override
-    public boolean contains(float x, float y) { return false; }
+    public boolean contains(float x, float y) {
+        return false;
+    }
 
     /**
      * @inheritDoc
@@ -145,13 +149,12 @@ public class Line2D extends Shape {
      * @param py the Y coordinate of the specified point to be
      *           compared with the specified line segment
      * @return an integer that indicates the position of the third specified
-     *          coordinates with respect to the line segment formed
-     *          by the first two specified coordinates.
+     * coordinates with respect to the line segment formed
+     * by the first two specified coordinates.
      */
     public static int relativeCCW(float x1, float y1,
                                   float x2, float y2,
-                                  float px, float py)
-    {
+                                  float px, float py) {
         x2 -= x1;
         y2 -= y1;
         px -= x1;

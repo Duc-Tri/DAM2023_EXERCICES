@@ -15,8 +15,7 @@ import com.dam2023.zelda.world.World;
 /**
  * Une InstanceEntity spécifique aux LivingEntities
  */
-public class InstanceLivingEntity extends InstanceEntity
-{
+public class InstanceLivingEntity extends InstanceEntity {
     // La quantité de points de vie de l'entité
     protected float life;
     // Définit si l'entité est vivante ou non
@@ -49,8 +48,7 @@ public class InstanceLivingEntity extends InstanceEntity
     // Si l'entité doit disparaitre
     public boolean mustBeRemoved = false;
 
-    public InstanceLivingEntity(LivingEntity entity)
-    {
+    public InstanceLivingEntity(LivingEntity entity) {
         super(entity);
         this.orientation = Orientation.BOTTOM;
         currentFrame = entity.textureFrames[0][0];
@@ -60,17 +58,8 @@ public class InstanceLivingEntity extends InstanceEntity
         this.life = entity.getMaxLife();
     }
 
-    public InstanceLivingEntity(LivingEntity entity, float x, float y)
-    {
-        super(entity, x, y);
-        this.orientation = Orientation.BOTTOM;
-        currentFrame = entity.textureFrames[0][0];
-        this.animationTime = 0;
-    }
-
     @Override
-    public void draw(SpriteBatch batch, float deltaTime)
-    {
+    public void draw(SpriteBatch batch, float deltaTime) {
         float xCentrePixel = Tile.TILE_SIZE * Chunk.CHUNK_TILE_SIZE * Map.MAP_CHUNK_SIZE / 2;
         float yCentrePixel = Tile.TILE_SIZE * Chunk.CHUNK_TILE_SIZE * Map.MAP_CHUNK_SIZE / 2;
 
@@ -79,42 +68,26 @@ public class InstanceLivingEntity extends InstanceEntity
         batch.draw(currentFrame, xPixel, yPixel);
     }
 
-    public void hurt(float damage, InstanceEntity hitter, Item source)
-    {
+    public void hurt(float damage, InstanceEntity hitter, Item source) {
         life -= damage;
-        if (life <= 0)
-        {
+        if (life <= 0) {
             alive = false;
         }
     }
 
-    public float getLife()
-    {
-        return life;
+    public Rectangle getDamageBounds() {
+        return ((LivingEntity) entity).getDamageBounds(x, y);
     }
 
-    public boolean isAlive()
-    {
-        return alive;
-    }
-
-    public Rectangle getDamageBounds()
-    {
-        return ((LivingEntity)entity).getDamageBounds(x, y);
-    }
-
-    public void push(InstanceEntity pusher, float distance, float time)
-    {
+    public void push(InstanceEntity pusher, float distance, float time) {
         remainingPushTime = time;
         totalPushTime = time;
         float distanceBetweenEntities = Vector2.dst(x, y, pusher.x, pusher.y);
-        float ratio = distance/distanceBetweenEntities;
-        damagedVector = new Vector2((x-pusher.x)*ratio, (y-pusher.y)*ratio);
+        float ratio = distance / distanceBetweenEntities;
+        damagedVector = new Vector2((x - pusher.x) * ratio, (y - pusher.y) * ratio);
     }
 
     @Override
-    public void update()
-    {
-
+    public void update() {
     }
 }
